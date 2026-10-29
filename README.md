@@ -138,25 +138,6 @@ A v1 cobre integralmente o primeiro jogo: **12 capítulos** (Verão, Outono, Inv
 
 ---
 
-## 🚀 Como rodar
-
-> Ajuste esta seção conforme o seu ambiente.
-
-```bash
-# 1. Suba a VM Linux com o banco SQL e execute os scripts de banco/
-
-# 2. Instale as dependências da API
-cd api
-npm install
-
-# 3. Inicie a API
-npm start
-
-# 4. Abra front/index.html no navegador
-```
-
----
-
 <div align="center">
 
 Projeto acadêmico sem fins lucrativos, inspirado em *The Last of Us Part I* (Naughty Dog), sem vínculo oficial com a franquia.
