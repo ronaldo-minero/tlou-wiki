@@ -1,0 +1,486 @@
+:root {
+    --fundo: #0c0e0d;
+    --fundo-alt: #0e1110;
+    --dourado: #cca248;
+    --dourado-alfa: #cca2484d;
+    --texto: #f5f7f6;
+    --cinza: #959c97;
+    --esmaecido: #646b66;
+    --borda: #ffffff14;
+    --pad: clamp(20px, 5vw, 60px);
+
+    --verao: #cca248;
+    --outono: #c26e47;
+    --inverno: #7aa7c7;
+    --primavera: #7ea872;
+}
+
+::-webkit-scrollbar { width: 8px; }
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--dourado);
+    border-radius: 20px;
+}
+
+::-webkit-scrollbar-track { background: rgba(77, 76, 76, 0.2) }
+
+::-webkit-scrollbar-thumb:hover { background: var(--dourado-alfa); }
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--fundo);
+    color: var(--texto);
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    transition: 0.2;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: var(--dourado);
+}
+
+ul {
+    list-style: none;
+}
+
+svg {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+h1, h2, h3 {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: .5px;
+}
+
+h1 { font-size: 42px; }
+h2 { font-size: 18px; }
+h3 { font-size: 22px; }
+
+.label, .btn {
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.label {
+    color: var(--cor, var(--dourado));
+}
+
+p.label {
+    margin-bottom: 12px;
+}
+
+.text {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--cinza);
+}
+
+.buttons {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.icon {
+    display: grid;
+    place-items: center;
+    color: var(--dourado);
+}
+
+.btn {
+    padding: 12px 22px;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    background: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+.btn:hover {
+    border-color: var(--dourado);
+    filter: brightness(1.15);
+}
+
+.btn-primary {
+    background: var(--dourado);
+    border-color: var(--dourado);
+    color: var(--fundo);
+}
+
+.btn-secondary {
+    border-color: #fff3;
+}
+
+/* NAVBAR */
+.navbar {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 9;
+    height: 72px;
+    padding: 0 var(--pad);
+    justify-content: space-between;
+    background: #0c0e0df2;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--borda);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    --cor: var(--esmaecido);
+}
+
+.logo .icon {
+    width: 44px;
+    height: 36px;
+    margin-bottom: 10px;
+    padding: 3px;
+}
+
+.logo .icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+.logo .label {
+    display: block;
+    font-size: 9px;
+}
+
+.links {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+    --cor: var(--cinza);
+}
+
+/* INICIO */
+.inicio {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-end;
+    align-content: flex-end;
+    gap: 40px;
+    min-height: calc(100vh - 72px);
+    padding: 60px var(--pad) 45px;
+    background: linear-gradient(to right, #0c0e0dfa, #0c0e0deb 38%, #0c0e0d73 70%, #0c0e0d1a), url('../assets/inicio-bg.jpg') center right / cover no-repeat var(--fundo);
+    box-shadow: inset 0 -60px 60px #0c0e0df2;
+}
+
+.inicio-conteudo {
+    max-width: 580px;
+}
+
+.inicio h1 {
+    font-size: 100px;
+    letter-spacing: -1px;
+    margin-bottom: 22px;
+}
+
+.inicio .text {
+    max-width: 530px;
+    margin-bottom: 34px;
+}
+
+.infos {
+    display: flex;
+    align-items: center;
+    --cor: var(--esmaecido);
+    flex-wrap: wrap;
+    gap: 20px 36px;
+    margin-top: 60px;
+    padding-top: 24px;
+    border-top: 1px solid var(--borda);
+}
+
+.info {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+}
+
+.infos h2 {
+    font-size: 34px;
+}
+
+/* SECOES */
+.section {
+    padding: clamp(50px, 7vw, 90px) var(--pad);
+    border-top: 1px solid var(--borda);
+}
+
+.top {
+    display: grid;
+    grid-template-columns: 1.25fr 1fr;
+    gap: 60px;
+    align-items: end;
+    text-align: left;
+    margin-bottom: 50px;
+}
+
+.top div {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+#jogo, #colecionaveis {
+    background: var(--fundo-alt);
+}
+
+#jornada .top .text {
+    text-align: right;
+}
+
+#jornada .image {
+    aspect-ratio: 16 / 11;
+}
+
+.verao { --cor: var(--verao); }
+.outono { --cor: var(--outono); }
+.inverno { --cor: var(--inverno); }
+.primavera { --cor: var(--primavera); }
+
+.spoiler {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 40px;
+    color: var(--esmaecido);
+    --cor: var(--esmaecido);
+}
+
+.spoiler svg {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+}
+
+#colecionaveis {
+    --cols: 3;
+}
+
+#colecionaveis .top .text {
+    text-align: right;
+    max-width: 360px;
+    justify-self: end;
+}
+
+/* CARDS */
+.bottom {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 22px;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    width: calc((100% - (var(--cols, 4) - 1) * 22px) / var(--cols, 4));
+}
+
+.image {
+    position: relative;
+    aspect-ratio: 1;
+    overflow: hidden;
+    background: #141716;
+    border-radius: 2px;
+    border-bottom: 2px solid var(--cor, transparent);
+}
+
+.image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(.92) contrast(1.08);
+}
+
+.cap {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 10px;
+    padding: 14px 16px;
+    background: linear-gradient(0deg, #0a0c0beb, #0a0c0b59 40%, transparent 68%);
+}
+
+.cap h3 {
+    font-size: 35px;
+}
+
+.box {
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+    padding: 24px 26px;
+    background: #101412;
+    border: 1px solid var(--borda);
+    border-radius: 2px;
+}
+
+.box:hover {
+    background: #151a17;
+    border-color: var(--dourado-alfa);
+}
+
+/* FINALZIN VEM UM NEGOCINHO */
+
+.the-end {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-items: center;
+    align-content: center;
+    gap: 40px;
+    border-top: 1px solid var(--borda);
+    min-height: calc(80vh - 72px);
+    padding: 60px var(--pad) 45px;
+    background: linear-gradient(to left, #0c0e0dfa, #0c0e0deb 38%, #0c0e0d73 70%, #0c0e0d1a), url('../assets/look-for-the-light.jpg') left top / cover var(--fundo);
+    box-shadow: inset 0 -60px 60px #0c0e0df2;
+}
+
+.the-end .label, .text, .buttons { justify-self: flex-end; }
+
+
+.the-end h1 {
+    font-size: 85px; 
+    margin-bottom: 22px;
+    max-width: 880px;
+}
+
+.the-end .text {
+    margin-bottom: 34px;
+}
+
+/* --- FOOTER --- */
+footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+    padding: 22px var(--pad);
+    background:var(--fundo);
+    border-top: 1px solid var(--borda);
+}
+
+.footer-info {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.footer-info .text {
+    font-size: 12px;
+    color: var(--cinza);
+}
+
+.credits {
+    font-size: 10px;
+    color: var(--cinza);
+}
+
+
+.socials {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.socials a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--esmaecido);
+    transition: color 0.2s, transform 0.2s;
+}
+
+.socials svg {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+    stroke: none;
+    overflow: visible;
+}
+
+.socials a:hover {
+    color: var(--dourado);
+    transform: translateY(-2px);
+}
+
+/* RESPONSIVO */
+@media (max-width: 1100px) {
+    .top {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    #jornada .top .text,
+    #colecionaveis .top .text {
+        text-align: left;
+        justify-self: start;
+        max-width: none;
+    }
+
+    .bottom {
+        --cols: 2;
+    }
+}
+
+@media (max-width: 768px) {
+    .links {
+        display: none;
+    }
+
+    h1 {
+        font-size: 32px;
+    }
+
+    .inicio h1 {
+        font-size: 45px;
+    }
+
+    .bottom {
+        --cols: 1;
+    }
+}
