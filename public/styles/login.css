@@ -9,7 +9,6 @@
     --esmaecido: #646b66;
     --borda: #ffffff14;
     --borda-foco: #cca24880;
-    --pad: clamp(20px, 5vw, 60px);
 }
 
 * {
@@ -22,7 +21,6 @@ body {
     background: var(--fundo);
     color: var(--texto);
     font-family: 'Inter', system-ui, sans-serif;
-    -webkit-font-smoothing: antialiased;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -390,7 +388,7 @@ footer {
     justify-content: space-between;
     align-items: center;
     gap: 30px;
-    padding: 22px var(--pad);
+    padding: 22px 40px;
     background: var(--fundo);
     border-top: 1px solid var(--borda);
     width: 100%;
@@ -439,7 +437,6 @@ footer {
     height: 20px;
     fill: currentColor;
     stroke: none;
-    overflow: visible;
 }
 
 .socials a:hover {
@@ -468,5 +465,9 @@ footer {
 
     .right-centro h1 {
         font-size: 38px;
+    }
+
+    footer {
+        padding: 22px 20px;
     }
 }

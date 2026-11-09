@@ -7,7 +7,6 @@
     --cinza: #959c97;
     --esmaecido: #646b66;
     --borda: #ffffff14;
-    --pad: clamp(20px, 5vw, 60px);
 
     --verao: #cca248;
     --outono: #c26e47;
@@ -15,16 +14,22 @@
     --primavera: #7ea872;
 }
 
-::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar { 
+    width: 8px; 
+}
 
 ::-webkit-scrollbar-thumb {
     background-color: var(--dourado);
     border-radius: 20px;
 }
 
-::-webkit-scrollbar-track { background: rgba(77, 76, 76, 0.2) }
+::-webkit-scrollbar-track { 
+    background: rgba(77, 76, 76, 0.2); 
+}
 
-::-webkit-scrollbar-thumb:hover { background: var(--dourado-alfa); }
+::-webkit-scrollbar-thumb:hover { 
+    background: var(--dourado-alfa); 
+}
 
 * {
     margin: 0;
@@ -36,14 +41,13 @@ body {
     background: var(--fundo);
     color: var(--texto);
     font-family: 'Inter', system-ui, sans-serif;
-    -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
 }
 
 a {
     color: inherit;
     text-decoration: none;
-    transition: 0.2;
+    transition: color 0.2s;
 }
 
 a:hover {
@@ -86,7 +90,7 @@ h3 { font-size: 22px; }
 }
 
 .label {
-    color: var(--cor, var(--dourado));
+    color: var(--dourado);
 }
 
 p.label {
@@ -106,8 +110,9 @@ p.label {
 }
 
 .icon {
-    display: grid;
-    place-items: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: var(--dourado);
 }
 
@@ -118,6 +123,7 @@ p.label {
     background: none;
     color: inherit;
     cursor: pointer;
+    transition: border-color 0.2s, filter 0.2s;
 }
 
 .btn:hover {
@@ -136,21 +142,15 @@ p.label {
 }
 
 /* NAVBAR */
-.navbar {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-}
-
 nav {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     position: sticky;
     top: 0;
     z-index: 9;
     height: 72px;
-    padding: 0 var(--pad);
-    justify-content: space-between;
+    padding: 0 40px;
     background: #0c0e0df2;
     backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--borda);
@@ -160,7 +160,6 @@ nav {
     display: flex;
     align-items: center;
     gap: 16px;
-    --cor: var(--esmaecido);
 }
 
 .logo .icon {
@@ -180,13 +179,21 @@ nav {
 .logo .label {
     display: block;
     font-size: 9px;
+    color: var(--esmaecido);
 }
 
 .links {
     display: flex;
     align-items: center;
     gap: 36px;
-    --cor: var(--cinza);
+}
+
+.links a {
+    color: var(--cinza);
+}
+
+.links a:hover {
+    color: var(--dourado);
 }
 
 /* INICIO */
@@ -195,10 +202,9 @@ nav {
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: flex-end;
-    align-content: flex-end;
     gap: 40px;
     min-height: calc(100vh - 72px);
-    padding: 60px var(--pad) 45px;
+    padding: 60px 40px 45px;
     background: linear-gradient(to right, #0c0e0dfa, #0c0e0deb 38%, #0c0e0d73 70%, #0c0e0d1a), url('../assets/inicio-bg.jpg') center right / cover no-repeat var(--fundo);
     box-shadow: inset 0 -60px 60px #0c0e0df2;
 }
@@ -221,11 +227,14 @@ nav {
 .infos {
     display: flex;
     align-items: center;
-    --cor: var(--esmaecido);
     gap: 20px 36px;
     margin-top: 60px;
     padding-top: 24px;
     border-top: 1px solid var(--borda);
+}
+
+.infos .label {
+    color: var(--esmaecido);
 }
 
 .info {
@@ -240,16 +249,15 @@ nav {
 
 /* SECOES */
 .section {
-    padding: clamp(50px, 7vw, 90px) var(--pad);
+    padding: 80px 40px;
     border-top: 1px solid var(--borda);
 }
 
 .top {
-    display: grid;
-    grid-template-columns: 1.25fr 1fr;
-    gap: 60px;
-    align-items: end;
-    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 40px;
     margin-bottom: 50px;
 }
 
@@ -263,18 +271,20 @@ nav {
     background: var(--fundo-alt);
 }
 
-#jornada .top .text {
+#jornada .top .text,
+#colecionaveis .top .text {
     text-align: right;
+    max-width: 360px;
 }
 
 #jornada .image {
     aspect-ratio: 16 / 11;
 }
 
-.verao { --cor: var(--verao); }
-.outono { --cor: var(--outono); }
-.inverno { --cor: var(--inverno); }
-.primavera { --cor: var(--primavera); }
+.verao .image { border-bottom: 2px solid var(--verao); }
+.outono .image { border-bottom: 2px solid var(--outono); }
+.inverno .image { border-bottom: 2px solid var(--inverno); }
+.primavera .image { border-bottom: 2px solid var(--primavera); }
 
 .spoiler {
     display: flex;
@@ -282,23 +292,16 @@ nav {
     gap: 12px;
     margin-top: 40px;
     color: var(--esmaecido);
-    --cor: var(--esmaecido);
+}
+
+.spoiler .label {
+    color: var(--esmaecido);
 }
 
 .spoiler svg {
     width: 20px;
     height: 20px;
     flex-shrink: 0;
-}
-
-#colecionaveis {
-    --cols: 3;
-}
-
-#colecionaveis .top .text {
-    text-align: right;
-    max-width: 360px;
-    justify-self: end;
 }
 
 /* CARDS */
@@ -312,7 +315,11 @@ nav {
     display: flex;
     flex-direction: column;
     gap: 14px;
-    width: calc((100% - (var(--cols, 4) - 1) * 22px) / var(--cols, 4));
+    width: calc(25% - 17px);
+}
+
+#colecionaveis .card {
+    width: calc(33.333% - 15px);
 }
 
 .image {
@@ -321,7 +328,6 @@ nav {
     overflow: hidden;
     background: #141716;
     border-radius: 2px;
-    border-bottom: 2px solid var(--cor, transparent);
 }
 
 .image img {
@@ -362,28 +368,30 @@ nav {
     border-color: var(--dourado-alfa);
 }
 
-/* FINALZIN VEM UM NEGOCINHO */
-
+/* THE END (SEÇÃO FINAL) */
 .the-end {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    align-content: center;
     gap: 40px;
     border-top: 1px solid var(--borda);
     min-height: calc(80vh - 72px);
-    padding: 60px var(--pad) 45px;
+    padding: 60px 40px 45px;
     background: linear-gradient(to left, #0c0e0dfa, #0c0e0deb 38%, #0c0e0d73 70%, #0c0e0d1a), url('../assets/look-for-the-light.jpg') left top / cover var(--fundo);
     box-shadow: inset 0 -60px 60px #0c0e0df2;
 }
 
-.the-end .label, .text, .buttons { justify-self: flex-end; }
-
+.end-conteudo {
+    max-width: 780px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    text-align: right;
+}
 
 .the-end h1 {
     font-size: 85px; 
     margin-bottom: 22px;
-    max-width: 880px;
 }
 
 .the-end .text {
@@ -396,8 +404,8 @@ footer {
     justify-content: space-between;
     align-items: center;
     gap: 30px;
-    padding: 22px var(--pad);
-    background:var(--fundo);
+    padding: 22px 40px;
+    background: var(--fundo);
     border-top: 1px solid var(--borda);
 }
 
@@ -416,7 +424,6 @@ footer {
     font-size: 10px;
     color: var(--cinza);
 }
-
 
 .socials {
     display: flex;
@@ -437,7 +444,6 @@ footer {
     height: 20px;
     fill: currentColor;
     stroke: none;
-    overflow: visible;
 }
 
 .socials a:hover {
@@ -448,25 +454,37 @@ footer {
 /* RESPONSIVO */
 @media (max-width: 1100px) {
     .top {
-        grid-template-columns: 1fr;
+        flex-direction: column;
+        align-items: flex-start;
         gap: 30px;
     }
 
     #jornada .top .text,
     #colecionaveis .top .text {
         text-align: left;
-        justify-self: start;
         max-width: none;
     }
 
-    .bottom {
-        --cols: 2;
+    .card,
+    #colecionaveis .card {
+        width: calc(50% - 11px);
     }
 }
 
 @media (max-width: 768px) {
+    nav {
+        padding: 0 20px;
+    }
+
     .links {
         display: none;
+    }
+
+    .inicio,
+    .section,
+    .the-end {
+        padding-left: 20px;
+        padding-right: 20px;
     }
 
     h1 {
@@ -477,7 +495,19 @@ footer {
         font-size: 45px;
     }
 
-    .bottom {
-        --cols: 1;
+    .the-end h1 {
+        font-size: 45px;
+    }
+
+    .card,
+    #colecionaveis .card {
+        width: 100%;
+    }
+
+    footer {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+        padding: 22px 20px;
     }
 }
