@@ -1,0 +1,475 @@
+:root {
+    --fundo: #0c0e0d;
+    --fundo-alt: #101412;
+    --fundo-input: #121614;
+    --dourado: #cca248;
+    --dourado-hover: #dbb359;
+    --texto: #f5f7f6;
+    --cinza: #959c97;
+    --esmaecido: #646b66;
+    --borda: #ffffff14;
+    --borda-foco: #cca24880;
+    --pad: clamp(20px, 5vw, 60px);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--fundo);
+    color: var(--texto);
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* ESTRUTURA PRINCIPAL */
+.main {
+    display: flex;
+    flex: 1;
+    width: 100%;
+}
+
+/* LADO ESQUERDO */
+.left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 48px 56px;
+    background: linear-gradient(180deg, rgba(12, 14, 13, 0.75) 0%, rgba(12, 14, 13, 0.4) 40%, rgba(12, 14, 13, 0.95) 100%), url('../assets/inicio-bg.jpg') center center / cover no-repeat;
+    border-right: 1px solid var(--borda);
+    position: relative;
+}
+
+.left-topo {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.logo-icon {
+    width: 44px;
+    height: 44px;
+    padding: 8px;
+    border: 1px solid var(--borda);
+    border-radius: 2px;
+    background: rgba(12, 14, 13, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.logo-texto h2 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--texto);
+    line-height: 1.1;
+}
+
+.logo-texto .label {
+    display: block;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: var(--esmaecido);
+    text-transform: uppercase;
+    margin-top: 4px;
+}
+
+.left-centro {
+    max-width: 460px;
+    margin: 40px 0;
+}
+
+.left-centro .label {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: var(--dourado);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+}
+
+.left-centro h1 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 52px;
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: 0.5px;
+    color: var(--texto);
+    margin-bottom: 20px;
+}
+
+.left-centro .text {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--cinza);
+}
+
+.left-rodape {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 20px;
+    border-top: 1px solid var(--borda);
+}
+
+.left-rodape .label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: var(--esmaecido);
+    text-transform: uppercase;
+}
+
+.left-rodape svg {
+    stroke: var(--dourado);
+    fill: none;
+    width: 18px;
+    height: 18px;
+}
+
+/* LADO DIREITO */
+.right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 48px 64px;
+    background: var(--fundo);
+}
+
+.right-topo {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.voltar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--esmaecido);
+    transition: color 0.2s;
+}
+
+.voltar:hover {
+    color: var(--dourado);
+}
+
+.voltar svg {
+    stroke: currentColor;
+    fill: none;
+    width: 14px;
+    height: 14px;
+}
+
+.right-centro {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 420px;
+    width: 100%;
+    margin: 40px 0;
+}
+
+.right-centro .label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: var(--dourado);
+    text-transform: uppercase;
+    margin-bottom: 14px;
+}
+
+.right-centro h1 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: 0.5px;
+    color: var(--texto);
+    margin-bottom: 16px;
+}
+
+.right-centro .text {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--cinza);
+    margin-bottom: 32px;
+}
+
+/* FORMULARIO */
+.formulario {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.campo .label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--cinza);
+}
+
+.campo input {
+    width: 100%;
+    height: 48px;
+    padding: 0 16px;
+    background: var(--fundo-input);
+    border: 1px solid var(--borda);
+    border-radius: 2px;
+    color: var(--texto);
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.campo input:focus {
+    border-color: var(--borda-foco);
+}
+
+.campo input::placeholder {
+    color: var(--esmaecido);
+}
+
+.campo-senha {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.campo-senha input {
+    padding-right: 48px;
+}
+
+.btn-olho {
+    position: absolute;
+    right: 12px;
+    background: none;
+    border: none;
+    color: var(--esmaecido);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px;
+    transition: color 0.2s;
+}
+
+.btn-olho:hover {
+    color: var(--texto);
+}
+
+.btn-olho svg {
+    stroke: currentColor;
+    fill: none;
+    width: 18px;
+    height: 18px;
+}
+
+.btn-entrar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    height: 48px;
+    margin-top: 8px;
+    background: var(--dourado);
+    border: none;
+    border-radius: 2px;
+    color: var(--fundo);
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s, filter 0.2s;
+}
+
+.btn-entrar:hover {
+    filter: brightness(1.15);
+}
+
+.btn-entrar svg {
+    stroke: currentColor;
+    fill: none;
+    width: 16px;
+    height: 16px;
+}
+
+.link-cadastro {
+    text-align: center;
+    font-size: 13px;
+    color: var(--cinza);
+    margin-top: 4px;
+}
+
+.link-cadastro a {
+    color: var(--dourado);
+    font-weight: 500;
+    transition: text-decoration 0.2s;
+}
+
+.link-cadastro a:hover {
+    text-decoration: underline;
+}
+
+/* RODAPE DIREITO */
+.right-rodape {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-top: 20px;
+    border-top: 1px solid var(--borda);
+}
+
+.aviso-seguranca {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    color: var(--esmaecido);
+}
+
+.aviso-seguranca svg {
+    stroke: var(--esmaecido);
+    fill: none;
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+}
+
+.disclaimer {
+    font-size: 9px;
+    letter-spacing: 1px;
+    color: var(--esmaecido);
+    text-transform: uppercase;
+}
+
+/* --- FOOTER --- */
+footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+    padding: 22px var(--pad);
+    background: var(--fundo);
+    border-top: 1px solid var(--borda);
+    width: 100%;
+}
+
+.footer-info {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.footer-info .text {
+    font-size: 12px;
+    color: var(--cinza);
+}
+
+.credits {
+    font-size: 10px;
+    color: var(--cinza);
+}
+
+.socials {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.socials a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--esmaecido);
+    transition: color 0.2s, transform 0.2s;
+}
+
+.socials .label {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: inherit;
+}
+
+.socials svg {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+    stroke: none;
+    overflow: visible;
+}
+
+.socials a:hover {
+    color: var(--dourado);
+    transform: translateY(-2px);
+}
+
+/* RESPONSIVO */
+@media (max-width: 960px) {
+    .main {
+        flex-direction: column;
+    }
+
+    .left {
+        display: none;
+    }
+
+    .right {
+        min-height: 100vh;
+        padding: 32px 24px;
+    }
+
+    .right-centro {
+        margin: 30px 0;
+    }
+
+    .right-centro h1 {
+        font-size: 38px;
+    }
+}

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TLou Wiki - Login</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Oswald:wght@500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles/login.css">
+
+</head>
+
+<body>
+
+    <section class="main">
+        <div class="left">
+            <div class="left-topo">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <img src="./assets/logo.png" alt="Logo Olhe para a Luz">
+                    </div>
+                    <div class="logo-texto">
+                        <h2>OLHE PARA A LUZ</h2>
+                        <span class="label">GUIA + TRACKER • THE LAST OF US PART I</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="left-centro">
+                <p class="label">THE LAST OF US PART I</p>
+                <h1>AINDA HÁ LUZ<br>NO CAMINHO.</h1>
+                <p class="text">Entre ruínas e recomeços, cada descoberta conta. Guarde um pouco dessa jornada.</p>
+            </div>
+
+            <div class="left-rodape">
+                <span class="label">SOBREVIVER NÃO É O BASTANTE</span>
+            </div>
+        </div>
+
+        <div class="right">
+            <div class="right-topo">
+                <a href="index.html" class="voltar">
+                    <svg viewBox="0 0 24 24">
+                        <line x1="19" y1="12" x2="5" y2="12"></line>
+                        <polyline points="12 19 5 12 12 5"></polyline>
+                    </svg>
+                    VOLTAR AO INÍCIO
+                </a>
+            </div>
+
+            <div class="right-centro">
+                <p class="label">TRACKER DE COLECIONÁVEIS</p>
+                <h1>BOM TER VOCÊ DE<br>VOLTA.</h1>
+                <p class="text">Sua jornada continua daqui. Entre para reencontrar suas descobertas.</p>
+
+                <form class="formulario">
+                    <div class="campo">
+                        <span for="input_email" class="label">E-MAIL</span>
+                        <input type="email" id="input_email" placeholder="voce@exemplo.com" required>
+                    </div>
+
+                    <div class="campo">
+                        <span for="input_senha" class="label">SENHA</span>
+                        <div class="campo-senha">
+                            <input type="password" id="input_senha" placeholder="Digite sua senha" required>
+                            <button type="button" class="btn-olho" onclick="alternarSenha()">
+                                <svg id="icone_olho" viewBox="0 0 24 24">
+                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                    <circle cx="12" cy="12" r="3"></circle>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-entrar">
+                        Entrar
+                        <svg viewBox="0 0 24 24">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </button>
+
+                    <p class="link-cadastro">
+                        Primeira vez aqui? <a href="cadastro.html">Criar uma conta</a>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+
+    <footer>
+    <div class="footer-info">
+        <p class="text">
+            Desenvolvido com ❤️ por <strong>Ronaldo Minéro</strong>, aluno da SPTech.
+        </p>
+        <span class="credits">Este é um <strong>projeto acadêmico</strong>. The Last of Us é marca registrada da Naughty Dog / Sony.</span>
+    </div>
+
+    <div class="socials">
+        <a href="https://github.com/ronaldo-minero" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+            </svg>
+            <span class="label">GitHub</span>
+        </a>
+
+        <a href="https://www.linkedin.com/in/ronaldo-min%C3%A9ro-j%C3%BAnior-0a44a7290/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+            </svg>
+            <span class="label">LinkedIn</span>
+        </a>
+    </div>
+</footer>
+
+    <script>
+        function alternarSenha() {
+            const input = document.getElementById('input_senha');
+            const icone = document.getElementById('icone_olho');
+
+            if (input.type === 'password') {
+                input.type = 'text';
+                icone.innerHTML = '<path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line>';
+            } else {
+                input.type = 'password';
+                icone.innerHTML = '<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle>';
+            }
+        }
+
+        function entrar() {
+//logica web data viz aqui...
+        }
+    </script>
+
+</body>
+
+</html>

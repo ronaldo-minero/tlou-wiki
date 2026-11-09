@@ -222,7 +222,6 @@ nav {
     display: flex;
     align-items: center;
     --cor: var(--esmaecido);
-    flex-wrap: wrap;
     gap: 20px 36px;
     margin-top: 60px;
     padding-top: 24px;
@@ -367,7 +366,6 @@ nav {
 
 .the-end {
     display: flex;
-    flex-wrap: wrap;
     justify-content: flex-end;
     align-items: center;
     align-content: center;
@@ -395,7 +393,6 @@ nav {
 /* --- FOOTER --- */
 footer {
     display: flex;
-    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
     gap: 30px;
