@@ -14,5 +14,5 @@ CREATE TABLE usuario(
 );
 
 INSERT INTO usuario (apelido, email, senha) VALUES
-('Ronaldo Teste', 't@t', 't')
+('Ronaldo Teste', 't@t', 't');
 
