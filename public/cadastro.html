@@ -58,11 +58,6 @@
                 <p class="text">Crie seu espaço na jornada de The Last of Us. Registre cada item encontrado, cada passo registrado.</p>
 
                 <form class="formulario">
-
-                    <div class="campo">
-                        <span for="modal_avatar" class="label">SELECIONE SEU AVATAR</span>
-                    </div>
-
                     <div class="campo">
                         <span for="input_apelido" class="label">SEU APELIDO</span>
                         <input type="text" id="input_apelido" placeholder="Como te chamam?" required>
@@ -86,8 +81,8 @@
                         </div>
                     </div>
 
-                    <button type="submit" class="btn btn-entrar">
-                        Entrar
+                    <button onclick="cadastrar()" type="button" class="btn btn-entrar">
+                        Cadastrar
                         <svg viewBox="0 0 24 24">
                             <line x1="5" y1="12" x2="19" y2="12"></line>
                             <polyline points="12 5 19 12 12 19"></polyline>
@@ -142,8 +137,64 @@
             }
         }
 
-        function entrar() {
-//logica web data viz aqui...
+        function cadastrar() {
+// aguardar();
+
+    //Recupere o valor da nova input pelo nome do id
+    // Agora vá para o método fetch logo abaixo
+    var apelidoVar = input_apelido.value;
+    var emailVar = input_email.value;
+    var senhaVar = input_senha.value;
+
+    // Verificando se há algum campo em branco
+    if (
+      apelidoVar == "" ||
+      emailVar == "" ||
+      senhaVar == ""
+    ) {
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML =
+        "(Mensagem de erro para todos os campos em branco)";
+
+      return false;
+    } else {
+      setInterval(5000);
+    }
+
+    // Enviando o valor da nova input
+    fetch("/usuarios/cadastrar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        // crie um atributo que recebe o valor recuperado aqui
+        // Agora vá para o arquivo routes/usuario.js
+        apelidoServer: apelidoVar,
+        emailServer: emailVar,
+        senhaServer: senhaVar,
+      }),
+    })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+
+
+          setTimeout(() => {
+            window.location = "login.html";
+          }, "2000");
+        } else {
+          throw "Houve um erro ao tentar realizar o cadastro!";
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+      });
+
+    return false;
+
+
         }
     </script>
 
