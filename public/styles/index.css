@@ -140,8 +140,6 @@ p.label {
 .btn-secondary {
     border-color: #fff3;
 }
-
-/* NAVBAR */
 nav {
     display: flex;
     align-items: center;
@@ -165,7 +163,6 @@ nav {
 .logo .icon {
     width: 44px;
     height: 36px;
-    margin-bottom: 10px;
     padding: 3px;
 }
 
@@ -174,12 +171,6 @@ nav {
     height: 100%;
     object-fit: contain;
     display: block;
-}
-
-.logo .label {
-    display: block;
-    font-size: 9px;
-    color: var(--esmaecido);
 }
 
 .links {
@@ -195,8 +186,6 @@ nav {
 .links a:hover {
     color: var(--dourado);
 }
-
-/* INICIO */
 .inicio {
     display: flex;
     flex-wrap: wrap;
@@ -246,8 +235,6 @@ nav {
 .infos h2 {
     font-size: 34px;
 }
-
-/* SECOES */
 .section {
     padding: 80px 40px;
     border-top: 1px solid var(--borda);
@@ -303,8 +290,6 @@ nav {
     height: 20px;
     flex-shrink: 0;
 }
-
-/* CARDS */
 .bottom {
     display: flex;
     flex-wrap: wrap;
@@ -367,8 +352,6 @@ nav {
     background: #151a17;
     border-color: var(--dourado-alfa);
 }
-
-/* THE END (SEÇÃO FINAL) */
 .the-end {
     display: flex;
     justify-content: flex-end;
@@ -397,8 +380,6 @@ nav {
 .the-end .text {
     margin-bottom: 34px;
 }
-
-/* --- FOOTER --- */
 footer {
     display: flex;
     justify-content: space-between;
@@ -450,8 +431,6 @@ footer {
     color: var(--dourado);
     transform: translateY(-2px);
 }
-
-/* RESPONSIVO */
 @media (max-width: 1100px) {
     .top {
         flex-direction: column;

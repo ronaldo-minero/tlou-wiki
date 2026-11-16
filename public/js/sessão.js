@@ -3,8 +3,11 @@ function validarSessao() {
     var email = sessionStorage.EMAIL_USUARIO;
     var nome = sessionStorage.APELIDO_USUARIO;
 
+    var b_usuario = document.getElementById("b_usuario");
+
+
     if (email != null && nome != null) {
-        alert('teste, autenticado')
+        b_usuario.innerHTML = nome;
     } else {
         window.location = "../login.html";
     }

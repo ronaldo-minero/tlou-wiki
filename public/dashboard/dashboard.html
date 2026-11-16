@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TLou Wiki - Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Oswald:wght@500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../styles/dashboard.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="logo">
+            <div class="icon">
+                <img src="../assets/logo.png" alt="Logo Olhe para a Luz">
+            </div>
+            <div>
+                <h2>OLHE PARA A LUZ</h2>
+            </div>
+        </div>
+
+        <ul class="links">
+            <li><a class="label ativo" href="#inicio">DASHBOARD</a></li>
+            <li><a class="label" href="#capitulos">CAPÍTULOS</a></li>
+            <li><a class="label" href="#ultimos">LINHA DO TEMPO</a></li>
+        </ul>
+
+        <div class="usuario">
+            <div class="modo-spoiler">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                </svg>
+                <span class="label">SEM SPOILER</span>
+                <div class="chave">
+                    <div class="chave-bolinha"></div>
+                </div>
+            </div>
+
+            <div class="perfil">
+                <span class="avatar">R</span>
+                <span class="nome" id="b_usuario">usuário</span>
+                <a href="../login.html" class="sair">SAIR</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="inicio" id="inicio">
+            <div class="top">
+                <div>
+                    <p class="label">SEU CADERNO DE VIAGEM / PART I</p>
+                    <h1>CONTINUE A JORNADA, <span id="b_usuario">usuário</span>.</h1>
+                </div>
+            </div>
+
+            <div class="resumo">
+                <div class="progresso">
+                    <span class="label">PROGRESSO DA AMOSTRA</span>
+
+                    <div class="grafico-box">
+                        <canvas id="graficoProgresso"></canvas>
+                        <div class="grafico-centro">
+                            <h2>47%</h2>
+                            <span class="label">CONCLUÍDO</span>
+                        </div>
+                    </div>
+
+                    <div class="progresso-info">
+                        <p class="text"><strong>15 de 32</strong> itens da amostra</p>
+                        <span class="label">03 / 12 CAPÍTULOS CONCLUÍDOS</span>
+                    </div>
+                </div>
+
+                <div class="tipos">
+                    <span class="label">POR TIPO DE COLECIONÁVEL</span>
+
+                    <div class="lista-tipos">
+                        <div class="tipo">
+                            <div class="tipo-topo">
+                                <p>Artefatos</p>
+                                <span>5/10</span>
+                            </div>
+                            <div class="barra">
+                                <div class="preenchido" style="width: 50%"></div>
+                            </div>
+                        </div>
+
+                        <div class="tipo">
+                            <div class="tipo-topo">
+                                <p>Pingentes</p>
+                                <span>3/6</span>
+                            </div>
+                            <div class="barra">
+                                <div class="preenchido" style="width: 50%"></div>
+                            </div>
+                        </div>
+
+                        <div class="tipo">
+                            <div class="tipo-topo">
+                                <p>Quadrinhos</p>
+                                <span>1/3</span>
+                            </div>
+                            <div class="barra">
+                                <div class="preenchido" style="width: 33%"></div>
+                            </div>
+                        </div>
+
+                        <div class="tipo">
+                            <div class="tipo-topo">
+                                <p>Manuais</p>
+                                <span>1/3</span>
+                            </div>
+                            <div class="barra">
+                                <div class="preenchido" style="width: 33%"></div>
+                            </div>
+                        </div>
+
+                        <div class="tipo">
+                            <div class="tipo-topo">
+                                <p>Ferramentas</p>
+                                <span>1/2</span>
+                            </div>
+                            <div class="barra">
+                                <div class="preenchido" style="width: 50%"></div>
+                            </div>
+                        </div>
+
+                        <div class="tipo">
+                            <div class="tipo-topo">
+                                <p>Conversas</p>
+                                <span>2/3</span>
+                            </div>
+                            <div class="barra">
+                                <div class="preenchido" style="width: 66%"></div>
+                            </div>
+                        </div>
+
+                        <div class="tipo">
+                            <div class="tipo-topo">
+                                <p>Piadas da Ellie</p>
+                                <span>1/2</span>
+                            </div>
+                            <div class="barra">
+                                <div class="preenchido" style="width: 50%"></div>
+                            </div>
+                        </div>
+
+                        <div class="tipo">
+                            <div class="tipo-topo">
+                                <p>Portas de faca</p>
+                                <span>1/2</span>
+                            </div>
+                            <div class="barra">
+                                <div class="preenchido" style="width: 50%"></div>
+                            </div>
+                        </div>
+
+                        <div class="tipo">
+                            <div class="tipo-topo">
+                                <p>Cofres</p>
+                                <span>0/1</span>
+                            </div>
+                            <div class="barra">
+                                <div class="preenchido" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="proximo">
+                    <div class="proximo-topo">
+                        <span class="label">PRÓXIMO CAPÍTULO</span>
+                        <svg viewBox="0 0 24 24">
+                            <line x1="7" y1="17" x2="17" y2="7"></line>
+                            <polyline points="7 7 17 7 17 17"></polyline>
+                        </svg>
+                    </div>
+
+                    <div class="proximo-conteudo">
+                        <span class="label">04 / VERÃO • EM ANDAMENTO</span>
+                        <h2>A CIDADE DE BILL</h2>
+                        <p class="text">3 de 8 itens encontrados na amostra.</p>
+                        <button class="btn btn-primary">
+                            CONTINUAR CHECKLIST
+                            <svg viewBox="0 0 24 24">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="capitulos">
+            <div class="top">
+                <div>
+                    <h1>CAPÍTULOS</h1>
+                    <p class="text">Clique em um capítulo para abrir o checklist de colecionáveis.</p>
+                </div>
+                <span class="label">12 ETAPAS / 04 ESTAÇÕES</span>
+            </div>
+
+            <div class="bottom">
+                <div class="card verao">
+                    <div class="image">
+                        <img src="../assets/verao.jpg" alt="Cidade natal">
+                        <div class="cap">
+                            <span class="label">01 / VERÃO</span>
+                        </div>
+                    </div>
+                    <div class="card-conteudo">
+                        <h3>Cidade natal</h3>
+                        <div class="card-rodape">
+                            <span class="label">CONCLUÍDO</span>
+                            <span class="text">4/4 itens</span>
+                        </div>
+                        <div class="barra">
+                            <div class="preenchido" style="width: 100%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card verao">
+                    <div class="image">
+                        <img src="../assets/verao.jpg" alt="A zona de quarentena">
+                        <div class="cap">
+                            <span class="label">02 / VERÃO</span>
+                        </div>
+                    </div>
+                    <div class="card-conteudo">
+                        <h3>A zona de quarentena</h3>
+                        <div class="card-rodape">
+                            <span class="label">CONCLUÍDO</span>
+                            <span class="text">4/4 itens</span>
+                        </div>
+                        <div class="barra">
+                            <div class="preenchido" style="width: 100%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card verao">
+                    <div class="image">
+                        <img src="../assets/verao.jpg" alt="A periferia">
+                        <div class="cap">
+                            <span class="label">03 / VERÃO</span>
+                        </div>
+                    </div>
+                    <div class="card-conteudo">
+                        <h3>A periferia</h3>
+                        <div class="card-rodape">
+                            <span class="label">CONCLUÍDO</span>
+                            <span class="text">4/4 itens</span>
+                        </div>
+                        <div class="barra">
+                            <div class="preenchido" style="width: 100%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card verao ativo">
+                    <div class="image">
+                        <img src="../assets/verao.jpg" alt="A cidade de Bill">
+                        <div class="cap">
+                            <span class="label">04 / VERÃO</span>
+                            <span class="status-tag">EM ANDAMENTO</span>
+                        </div>
+                    </div>
+                    <div class="card-conteudo">
+                        <h3>A cidade de Bill</h3>
+                        <div class="card-rodape">
+                            <span class="label">CONTINUAR →</span>
+                            <span class="text">3/8 itens</span>
+                        </div>
+                        <div class="barra">
+                            <div class="preenchido" style="width: 38%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card verao">
+                    <div class="image">
+                        <img src="../assets/verao.jpg" alt="Pittsburgh">
+                        <div class="cap">
+                            <span class="label">05 / VERÃO</span>
+                        </div>
+                    </div>
+                    <div class="card-conteudo">
+                        <h3>Pittsburgh</h3>
+                        <div class="card-rodape">
+                            <span class="label">NÃO INICIADO</span>
+                            <span class="text">0/5 itens</span>
+                        </div>
+                        <div class="barra">
+                            <div class="preenchido" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card verao">
+                    <div class="image">
+                        <img src="../assets/verao.jpg" alt="Os subúrbios">
+                        <div class="cap">
+                            <span class="label">06 / VERÃO</span>
+                        </div>
+                    </div>
+                    <div class="card-conteudo">
+                        <h3>Os subúrbios</h3>
+                        <div class="card-rodape">
+                            <span class="label">NÃO INICIADO</span>
+                            <span class="text">0/2 itens</span>
+                        </div>
+                        <div class="barra">
+                            <div class="preenchido" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card outono">
+                    <div class="image">
+                        <img src="../assets/outono.jpg" alt="A represa de Tommy">
+                        <div class="cap">
+                            <span class="label">07 / OUTONO</span>
+                        </div>
+                    </div>
+                    <div class="card-conteudo">
+                        <h3>A represa de Tommy</h3>
+                        <div class="card-rodape">
+                            <span class="label">NÃO INICIADO</span>
+                            <span class="text">0/2 itens</span>
+                        </div>
+                        <div class="barra">
+                            <div class="preenchido" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card outono">
+                    <div class="image">
+                        <img src="../assets/outono.jpg" alt="A universidade">
+                        <div class="cap">
+                            <span class="label">08 / OUTONO</span>
+                        </div>
+                    </div>
+                    <div class="card-conteudo">
+                        <h3>A universidade</h3>
+                        <div class="card-rodape">
+                            <span class="label">NÃO INICIADO</span>
+                            <span class="text">0/2 itens</span>
+                        </div>
+                        <div class="barra">
+                            <div class="preenchido" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card inverno">
+                    <div class="image">
+                        <img src="../assets/inverno.jpg" alt="Resort à beira do lago">
+                        <div class="cap">
+                            <span class="label">09 / INVERNO</span>
+                        </div>
+                    </div>
+                    <div class="card-conteudo">
+                        <h3>Resort à beira do lago</h3>
+                        <div class="card-rodape">
+                            <span class="label">NÃO INICIADO</span>
+                            <span class="text">0/2 itens</span>
+                        </div>
+                        <div class="barra">
+                            <div class="preenchido" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card primavera">
+                    <div class="image">
+                        <img src="../assets/primavera.jpg" alt="Terminal rodoviário">
+                        <div class="cap">
+                            <span class="label">10 / PRIMAVERA</span>
+                        </div>
+                    </div>
+                    <div class="card-conteudo">
+                        <h3>Terminal rodoviário</h3>
+                        <div class="card-rodape">
+                            <span class="label">NÃO INICIADO</span>
+                            <span class="text">0/1 item</span>
+                        </div>
+                        <div class="barra">
+                            <div class="preenchido" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card primavera">
+                    <div class="image">
+                        <img src="../assets/primavera.jpg" alt="O laboratório dos Vagalumes">
+                        <div class="cap">
+                            <span class="label">11 / PRIMAVERA</span>
+                        </div>
+                    </div>
+                    <div class="card-conteudo">
+                        <h3>O laboratório dos Vagalumes</h3>
+                        <div class="card-rodape">
+                            <span class="label">NÃO INICIADO</span>
+                            <span class="text">0/1 item</span>
+                        </div>
+                        <div class="barra">
+                            <div class="preenchido" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card primavera">
+                    <div class="image">
+                        <img src="../assets/primavera.jpg" alt="Jackson">
+                        <div class="cap">
+                            <span class="label">12 / PRIMAVERA</span>
+                        </div>
+                    </div>
+                    <div class="card-conteudo">
+                        <h3>Jackson</h3>
+                        <div class="card-rodape">
+                            <span class="label">NÃO INICIADO</span>
+                            <span class="text">0/1 item</span>
+                        </div>
+                        <div class="barra">
+                            <div class="preenchido" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="final" id="ultimos">
+            <div class="final-box">
+                <div class="top">
+                    <h2>ÚLTIMOS ENCONTRADOS</h2>
+                    <span class="label">AMOSTRA</span>
+                </div>
+
+                <div class="lista-ultimos">
+                    <div class="item">
+                        <div class="item-esquerda">
+                            <h4>Anotação de sobrevivente</h4>
+                            <span class="label">A CIDADE DE BILL • ARTEFATO</span>
+                        </div>
+                        <span class="tempo">há 5 min</span>
+                    </div>
+
+                    <div class="item">
+                        <div class="item-esquerda">
+                            <h4>Pingente encontrado</h4>
+                            <span class="label">A CIDADE DE BILL • PINGENTE</span>
+                        </div>
+                        <span class="tempo">há 12 min</span>
+                    </div>
+
+                    <div class="item">
+                        <div class="item-esquerda">
+                            <h4>Conversa no caminho</h4>
+                            <span class="label">A CIDADE DE BILL • CONVERSA</span>
+                        </div>
+                        <span class="tempo">há 20 min</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-info">
+            <p class="text">
+                Desenvolvido com ❤️ por <strong>Ronaldo Minéro</strong>, aluno da SPTech.
+            </p>
+            <span class="credits">Este é um <strong>projeto acadêmico</strong>. The Last of Us é marca registrada da Naughty Dog / Sony.</span>
+        </div>
+
+        <div class="socials">
+            <a href="https://github.com/ronaldo-minero" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                    <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+                </svg>
+                <span class="label">GitHub</span>
+            </a>
+
+            <a href="https://www.linkedin.com/in/ronaldo-min%C3%A9ro-j%C3%BAnior-0a44a7290/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                </svg>
+                <span class="label">LinkedIn</span>
+            </a>
+        </div>
+    </footer>
+
+    <script>
+        const ctxProgresso = document.getElementById('graficoProgresso');
+
+        new Chart(ctxProgresso, {
+            type: 'doughnut',
+            data: {
+                datasets: [{
+                    data: [47, 53],
+                    backgroundColor: ['#cca248', '#1c221f'],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                cutout: '90%',
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: { enabled: false }
+                }
+            }
+        });
+    </script>
+
+</body>
+
+</html>

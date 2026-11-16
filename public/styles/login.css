@@ -31,15 +31,11 @@ a {
     color: inherit;
     text-decoration: none;
 }
-
-/* ESTRUTURA PRINCIPAL */
 .main {
     display: flex;
     flex: 1;
     width: 100%;
 }
-
-/* LADO ESQUERDO */
 .left {
     flex: 1;
     display: flex;
@@ -84,16 +80,6 @@ a {
     letter-spacing: 1px;
     color: var(--texto);
     line-height: 1.1;
-}
-
-.logo-texto .label {
-    display: block;
-    font-size: 9px;
-    font-weight: 600;
-    letter-spacing: 2px;
-    color: var(--esmaecido);
-    text-transform: uppercase;
-    margin-top: 4px;
 }
 
 .left-centro {
@@ -148,8 +134,6 @@ a {
     width: 18px;
     height: 18px;
 }
-
-/* LADO DIREITO */
 .right {
     flex: 1;
     display: flex;
@@ -221,8 +205,6 @@ a {
     color: var(--cinza);
     margin-bottom: 32px;
 }
-
-/* FORMULARIO */
 .formulario {
     display: flex;
     flex-direction: column;
@@ -348,8 +330,6 @@ a {
 .link-cadastro a:hover {
     text-decoration: underline;
 }
-
-/* RODAPE DIREITO */
 .right-rodape {
     display: flex;
     flex-direction: column;
@@ -380,8 +360,6 @@ a {
     color: var(--esmaecido);
     text-transform: uppercase;
 }
-
-/* --- FOOTER --- */
 footer {
     display: flex;
     flex-wrap: wrap;
@@ -443,8 +421,6 @@ footer {
     color: var(--dourado);
     transform: translateY(-2px);
 }
-
-/* RESPONSIVO */
 @media (max-width: 960px) {
     .main {
         flex-direction: column;
