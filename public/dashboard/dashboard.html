@@ -12,9 +12,10 @@
         rel="stylesheet">
     <link rel="stylesheet" href="../styles/dashboard.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../js/sessao.js"></script>
 </head>
 
-<body>
+<body onload="validarSessao()">
 
     <nav class="navbar">
         <div class="logo">
@@ -45,7 +46,7 @@
 
             <div class="perfil">
                 <span class="avatar">R</span>
-                <span class="nome" id="b_usuario">usuário</span>
+                <span class="nome" id="web_usuario_nav">usuário</span>
                 <a href="../login.html" class="sair">SAIR</a>
             </div>
         </div>
@@ -56,7 +57,7 @@
             <div class="top">
                 <div>
                     <p class="label">SEU CADERNO DE VIAGEM / PART I</p>
-                    <h1>CONTINUE A JORNADA, <span id="b_usuario">usuário</span>.</h1>
+                    <h1>CONTINUE A JORNADA, <span id="web_usuario">usuário</span>.</h1>
                 </div>
             </div>
 
@@ -501,7 +502,14 @@
         </div>
     </footer>
 
+</body>
+
+</html>
+
     <script>
+        web_usuario.innerHTML = sessionStorage.APELIDO_USUARIO;
+        web_usuario_nav.innerHTML = sessionStorage.APELIDO_USUARIO;
+
         const ctxProgresso = document.getElementById('graficoProgresso');
 
         new Chart(ctxProgresso, {
@@ -524,7 +532,3 @@
             }
         });
     </script>
-
-</body>
-
-</html>
