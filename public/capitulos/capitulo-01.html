@@ -12,9 +12,10 @@
         rel="stylesheet">
     <link rel="stylesheet" href="../styles/capitulos.css">
     <script src="../js/sessao.js"></script>
+    <script src="../js/checklist.js"></script>
 </head>
 
-<body onload="validarSessao()">
+<body onload="validarSessao(), carregarConquistaBD()">
 
     <nav class="navbar">
         <div class="logo">
@@ -391,3 +392,39 @@
 </body>
 
 </html>
+
+<script>
+    function carregarConquistaBD() {
+    fetch("/conquistas/carregarConquistasBD", {
+                method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                capitulo: 1
+            })
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO carregarConquistasBD() no html!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+                });
+
+            } else {
+
+                console.log("Houve um erro ao tentar carregar as conquistas no BD!");
+
+                resposta.text().then(texto => {
+                    console.error(texto);
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+    }
+</script>
