@@ -396,7 +396,7 @@ nav {
     padding: 26px;
     border: 1px solid var(--borda);
     border-radius: 2px;
-    background: linear-gradient(180deg, rgba(12, 14, 13, 0.35) 0%, rgba(12, 14, 13, 0.92) 85%), url('../assets/verao.jpg') center center / cover no-repeat;
+    background: linear-gradient(180deg, rgba(12, 14, 13, 0.35) 0%, rgba(12, 14, 13, 0.92) 85%), url('../assets/cidade-de-bill.png') center center / cover no-repeat;
     display: flex;
     flex-direction: column;
     justify-content: space-between;

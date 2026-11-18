@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TLou Wiki - A cidade de Bill</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Oswald:wght@500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../styles/capitulos.css">
+    <script src="../js/sessao.js"></script>
+</head>
+
+<body onload="validarSessao()">
+
+    <nav class="navbar">
+        <div class="logo">
+            <div class="icon">
+                <img src="../assets/logo.png" alt="Logo Olhe para a Luz">
+            </div>
+            <div>
+                <h2>OLHE PARA A LUZ</h2>
+            </div>
+        </div>
+
+        <ul class="links">
+            <li><a class="label" href="../dashboard/dashboard.html#inicio">DASHBOARD</a></li>
+            <li><a class="label ativo" href="../dashboard/dashboard.html#capitulos">CAPÍTULOS</a></li>
+            <li><a class="label" href="../dashboard/dashboard.html#ultimos">LINHA DO TEMPO</a></li>
+        </ul>
+
+        <div class="usuario">
+            <div class="modo-spoiler">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                </svg>
+                <span class="label">SEM SPOILER</span>
+                <div class="chave">
+                    <div class="chave-bolinha"></div>
+                </div>
+            </div>
+
+            <div class="perfil">
+                <span class="avatar">R</span>
+                <span class="nome" id="b_usuario">usuário</span>
+                <a href="../login.html" class="sair">SAIR</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <div class="topo-navegacao">
+            <a href="../dashboard/dashboard.html" class="voltar">
+                <span>←</span> VOLTAR À DASHBOARD
+            </a>
+            <span class="caminho">CAMPANHA / VERÃO / CAPÍTULO 04</span>
+        </div>
+
+        <section class="banner">
+            <img class="banner-img" src="../assets/cidade-de-bill.png" alt="A cidade de Bill">
+            <div class="banner-overlay"></div>
+            <div class="banner-conteudo">
+                <div class="banner-tags">
+                    <span class="tag">04 / VERÃO / CAPÍTULOS 01-04</span>
+                    <span class="tag status">EM ANDAMENTO</span>
+                </div>
+                <h1>A CIDADE DE BILL</h1>
+                <p class="sinopse">Entre ruas tomadas pela vegetação, vale a pena olhar além do caminho.</p>
+            </div>
+        </section>
+
+        <section class="progresso-caixa">
+            <div class="progresso-item progresso-esq">
+                <span class="label">PROGRESSO DA AMOSTRA</span>
+                <div class="numero">3 / 8 itens</div>
+            </div>
+
+            <div class="progresso-barra-meio">
+                <span class="label">38% CONCLUÍDO</span>
+                <div class="barra">
+                    <div class="preenchido" style="width: 38%"></div>
+                </div>
+            </div>
+
+            <div class="progresso-item progresso-dir">
+                <span class="label">5 ITENS PENDENTES</span>
+            </div>
+        </section>
+
+        <section class="filtros">
+            <div class="filtros-esq">
+                <span class="label">FILTRAR POR TIPO</span>
+                <div class="filtros-botoes">
+                    <button class="filtro-btn ativo">Todos - 8</button>
+                    <button class="filtro-btn">Artefatos - 2</button>
+                    <button class="filtro-btn">Pingentes - 1</button>
+                    <button class="filtro-btn">Conversas - 1</button>
+                    <button class="filtro-btn">Manuais - 1</button>
+                    <button class="filtro-btn">Ferramentas - 1</button>
+                    <button class="filtro-btn">Portas de faca - 1</button>
+                    <button class="filtro-btn">Cofres - 1</button>
+                </div>
+            </div>
+
+            <div class="filtros-dir">
+                <label class="filtro-checkbox">
+                    <input type="checkbox">
+                    <span>Mostrar apenas pendentes</span>
+                </label>
+            </div>
+        </section>
+
+        <section class="grupo">
+            <div class="grupo-topo">
+                <h2>Exploração inicial</h2>
+                <span class="label">3 DE 4 ENCONTRADOS</span>
+            </div>
+
+            <div class="lista">
+                <div class="item">
+                    <div class="item-esq">
+                        <div class="item-check marcado">
+                            <svg viewBox="0 0 24 24">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                        </div>
+                        <div class="item-info">
+                            <h4>Anotação de sobrevivente</h4>
+                            <p class="local">
+                                <svg viewBox="0 0 24 24">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
+                                </svg>
+                                Área de exploração • Interiores
+                            </p>
+                            <p class="descricao">Observe superfícies e objetos antes de deixar um ambiente.</p>
+                        </div>
+                    </div>
+                    <div class="item-dir">
+                        <span class="tipo-badge">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                            </svg>
+                            ARTEFATO
+                        </span>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="item-esq">
+                        <div class="item-check marcado">
+                            <svg viewBox="0 0 24 24">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                        </div>
+                        <div class="item-info">
+                            <h4>Pingente encontrado</h4>
+                            <p class="local">
+                                <svg viewBox="0 0 24 24">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
+                                </svg>
+                                Área de exploração • Arredores
+                            </p>
+                            <p class="descricao">Olhe com calma para os detalhes fora do caminho principal.</p>
+                        </div>
+                    </div>
+                    <div class="item-dir">
+                        <span class="tipo-badge">
+                            <svg viewBox="0 0 24 24">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <line x1="12" y1="8" x2="12" y2="12"></line>
+                                <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                            </svg>
+                            PINGENTE
+                        </span>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="item-esq">
+                        <div class="item-check marcado">
+                            <svg viewBox="0 0 24 24">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                        </div>
+                        <div class="item-info">
+                            <h4>Conversa no caminho</h4>
+                            <p class="local">
+                                <svg viewBox="0 0 24 24">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
+                                </svg>
+                                Passo da exploração • Com Ellie
+                            </p>
+                            <p class="descricao">Dê espaço ao diálogo quando surgir uma oportunidade de conversa.</p>
+                        </div>
+                    </div>
+                    <div class="item-dir">
+                        <span class="tipo-badge">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                            </svg>
+                            CONVERSA
+                        </span>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="item-esq">
+                        <div class="item-check"></div>
+                        <div class="item-info">
+                            <h4>Registro de uma vida</h4>
+                            <p class="local">
+                                <svg viewBox="0 0 24 24">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
+                                </svg>
+                                Área de exploração • Interiores
+                            </p>
+                            <p class="descricao">Revise os ambientes acessíveis antes de seguir adiante.</p>
+                        </div>
+                    </div>
+                    <div class="item-dir">
+                        <span class="tipo-badge">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                            </svg>
+                            ARTEFATO
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="grupo">
+            <div class="grupo-topo">
+                <h2>Antes de seguir viagem</h2>
+                <span class="label">0 DE 4 ENCONTRADOS</span>
+            </div>
+
+            <div class="lista">
+                <div class="item">
+                    <div class="item-esq">
+                        <div class="item-check"></div>
+                        <div class="item-info">
+                            <h4>Leitura de sobrevivência</h4>
+                            <p class="local">
+                                <svg viewBox="0 0 24 24">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
+                                </svg>
+                                Ponto de apoio • Área de busca
+                            </p>
+                            <p class="descricao">Reserve um momento para examinar os objetos disponíveis.</p>
+                        </div>
+                    </div>
+                    <div class="item-dir">
+                        <span class="tipo-badge">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                            </svg>
+                            MANUAL
+                        </span>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="item-esq">
+                        <div class="item-check"></div>
+                        <div class="item-info">
+                            <h4>Equipamento útil</h4>
+                            <p class="local">
+                                <svg viewBox="0 0 24 24">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
+                                </svg>
+                                Ponto de apoio • Área de busca
+                            </p>
+                            <p class="descricao">Explore os espaços laterais com atenção aos recursos.</p>
+                        </div>
+                    </div>
+                    <div class="item-dir">
+                        <span class="tipo-badge">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+                            </svg>
+                            FERRAMENTA
+                        </span>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="item-esq">
+                        <div class="item-check"></div>
+                        <div class="item-info">
+                            <h4>Passagem para explorar</h4>
+                            <p class="local">
+                                <svg viewBox="0 0 24 24">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
+                                </svg>
+                                Caminho alternativo • Acesso fechado
+                            </p>
+                            <p class="descricao">Confira seus recursos antes de decidir abrir uma passagem.</p>
+                        </div>
+                    </div>
+                    <div class="item-dir">
+                        <span class="tipo-badge">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M3 21h18M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16"></path>
+                            </svg>
+                            PORTA DE FACA
+                        </span>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="item-esq">
+                        <div class="item-check"></div>
+                        <div class="item-info">
+                            <h4>Segredos guardados</h4>
+                            <p class="local">
+                                <svg viewBox="0 0 24 24">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
+                                </svg>
+                                Área de exploração • Espaço reservado
+                            </p>
+                            <p class="descricao">Leia as pistas que encontrar. Não tenha pressa de sair.</p>
+                        </div>
+                    </div>
+                    <div class="item-dir">
+                        <span class="tipo-badge">
+                            <svg viewBox="0 0 24 24">
+                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                            </svg>
+                            COFRE
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="navegacao">
+            <a href="capitulo-03.html" class="nav-bloco">
+               <span class="label">← CAPÍTULO ANTERIOR</span>
+               <h3>A periferia</h3>
+           </a>
+            <a href="capitulo-05.html" class="nav-bloco dir">
+               <span class="label">PRÓXIMO CAPÍTULO →</span>
+               <h3>Pittsburgh</h3>
+           </a>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-logo">
+            <img src="../assets/logo.png" alt="Logo Olhe para a Luz">
+            <h2>OLHE PARA A LUZ</h2>
+        </div>
+
+        <div class="footer-texto">
+            Desenvolvido por <strong>Ronaldo Minéro</strong>, aluno da SPTech.<br>
+            Este é um <strong>projeto acadêmico</strong>. The Last of Us é marca registrada da Naughty Dog / Sony.
+        </div>
+
+        <div class="footer-links">
+            <a href="https://github.com/ronaldo-minero" target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                    <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+                </svg>
+                GitHub
+            </a>
+            <a href="https://www.linkedin.com/in/ronaldo-min%C3%A9ro-j%C3%BAnior-0a44a7290/" target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                </svg>
+                LinkedIn
+            </a>
+        </div>
+    </footer>
+
+</body>
+
+</html>
