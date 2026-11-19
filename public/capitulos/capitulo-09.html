@@ -15,7 +15,7 @@
     <script src="../js/checklist.js"></script>
 </head>
 
-<body onload="validarSessao()">
+<body onload="validarSessao(), carregarConquistaBD()">
 
     <nav class="navbar">
         <div class="logo">
@@ -116,238 +116,10 @@
 
         <section class="grupo">
             <div class="grupo-topo">
-                <h2>Exploração inicial</h2>
-                <span class="label">3 DE 4 ENCONTRADOS</span>
+                <h2>Colecionáveis</h2>
             </div>
 
-            <div class="lista">
-                <div class="item">
-                    <div class="item-esq">
-                        <div class="item-check marcado">
-                            <svg viewBox="0 0 24 24">
-                                <polyline points="20 6 9 17 4 12"></polyline>
-                            </svg>
-                        </div>
-                        <div class="item-info">
-                            <h4>Anotação de sobrevivente</h4>
-                            <p class="local">
-                                <svg viewBox="0 0 24 24">
-                                    <circle cx="12" cy="12" r="10"></circle>
-                                    <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
-                                </svg>
-                                Área de exploração • Interiores
-                            </p>
-                            <p class="descricao">Observe superfícies e objetos antes de deixar um ambiente.</p>
-                        </div>
-                    </div>
-                    <div class="item-dir">
-                        <span class="tipo-badge">
-                            <svg viewBox="0 0 24 24">
-                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                                <polyline points="14 2 14 8 20 8"></polyline>
-                            </svg>
-                            ARTEFATO
-                        </span>
-                    </div>
-                </div>
-
-                <div class="item">
-                    <div class="item-esq">
-                        <div class="item-check marcado">
-                            <svg viewBox="0 0 24 24">
-                                <polyline points="20 6 9 17 4 12"></polyline>
-                            </svg>
-                        </div>
-                        <div class="item-info">
-                            <h4>Pingente encontrado</h4>
-                            <p class="local">
-                                <svg viewBox="0 0 24 24">
-                                    <circle cx="12" cy="12" r="10"></circle>
-                                    <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
-                                </svg>
-                                Área de exploração • Arredores
-                            </p>
-                            <p class="descricao">Olhe com calma para os detalhes fora do caminho principal.</p>
-                        </div>
-                    </div>
-                    <div class="item-dir">
-                        <span class="tipo-badge">
-                            <svg viewBox="0 0 24 24">
-                                <circle cx="12" cy="12" r="10"></circle>
-                                <line x1="12" y1="8" x2="12" y2="12"></line>
-                                <line x1="12" y1="16" x2="12.01" y2="16"></line>
-                            </svg>
-                            PINGENTE
-                        </span>
-                    </div>
-                </div>
-
-                <div class="item">
-                    <div class="item-esq">
-                        <div class="item-check marcado">
-                            <svg viewBox="0 0 24 24">
-                                <polyline points="20 6 9 17 4 12"></polyline>
-                            </svg>
-                        </div>
-                        <div class="item-info">
-                            <h4>Conversa no caminho</h4>
-                            <p class="local">
-                                <svg viewBox="0 0 24 24">
-                                    <circle cx="12" cy="12" r="10"></circle>
-                                    <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
-                                </svg>
-                                Passo da exploração • Com Ellie
-                            </p>
-                            <p class="descricao">Dê espaço ao diálogo quando surgir uma oportunidade de conversa.</p>
-                        </div>
-                    </div>
-                    <div class="item-dir">
-                        <span class="tipo-badge">
-                            <svg viewBox="0 0 24 24">
-                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-                            </svg>
-                            CONVERSA
-                        </span>
-                    </div>
-                </div>
-
-                <div class="item">
-                    <div class="item-esq">
-                        <div class="item-check"></div>
-                        <div class="item-info">
-                            <h4>Registro de uma vida</h4>
-                            <p class="local">
-                                <svg viewBox="0 0 24 24">
-                                    <circle cx="12" cy="12" r="10"></circle>
-                                    <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
-                                </svg>
-                                Área de exploração • Interiores
-                            </p>
-                            <p class="descricao">Revise os ambientes acessíveis antes de seguir adiante.</p>
-                        </div>
-                    </div>
-                    <div class="item-dir">
-                        <span class="tipo-badge">
-                            <svg viewBox="0 0 24 24">
-                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                                <polyline points="14 2 14 8 20 8"></polyline>
-                            </svg>
-                            ARTEFATO
-                        </span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="grupo">
-            <div class="grupo-topo">
-                <h2>Antes de seguir viagem</h2>
-                <span class="label">0 DE 4 ENCONTRADOS</span>
-            </div>
-
-            <div class="lista">
-                <div class="item">
-                    <div class="item-esq">
-                        <div class="item-check"></div>
-                        <div class="item-info">
-                            <h4>Leitura de sobrevivência</h4>
-                            <p class="local">
-                                <svg viewBox="0 0 24 24">
-                                    <circle cx="12" cy="12" r="10"></circle>
-                                    <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
-                                </svg>
-                                Ponto de apoio • Área de busca
-                            </p>
-                            <p class="descricao">Reserve um momento para examinar os objetos disponíveis.</p>
-                        </div>
-                    </div>
-                    <div class="item-dir">
-                        <span class="tipo-badge">
-                            <svg viewBox="0 0 24 24">
-                                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
-                                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
-                            </svg>
-                            MANUAL
-                        </span>
-                    </div>
-                </div>
-
-                <div class="item">
-                    <div class="item-esq">
-                        <div class="item-check"></div>
-                        <div class="item-info">
-                            <h4>Equipamento útil</h4>
-                            <p class="local">
-                                <svg viewBox="0 0 24 24">
-                                    <circle cx="12" cy="12" r="10"></circle>
-                                    <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
-                                </svg>
-                                Ponto de apoio • Área de busca
-                            </p>
-                            <p class="descricao">Explore os espaços laterais com atenção aos recursos.</p>
-                        </div>
-                    </div>
-                    <div class="item-dir">
-                        <span class="tipo-badge">
-                            <svg viewBox="0 0 24 24">
-                                <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
-                            </svg>
-                            FERRAMENTA
-                        </span>
-                    </div>
-                </div>
-
-                <div class="item">
-                    <div class="item-esq">
-                        <div class="item-check"></div>
-                        <div class="item-info">
-                            <h4>Passagem para explorar</h4>
-                            <p class="local">
-                                <svg viewBox="0 0 24 24">
-                                    <circle cx="12" cy="12" r="10"></circle>
-                                    <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
-                                </svg>
-                                Caminho alternativo • Acesso fechado
-                            </p>
-                            <p class="descricao">Confira seus recursos antes de decidir abrir uma passagem.</p>
-                        </div>
-                    </div>
-                    <div class="item-dir">
-                        <span class="tipo-badge">
-                            <svg viewBox="0 0 24 24">
-                                <path d="M3 21h18M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16"></path>
-                            </svg>
-                            PORTA DE FACA
-                        </span>
-                    </div>
-                </div>
-
-                <div class="item">
-                    <div class="item-esq">
-                        <div class="item-check"></div>
-                        <div class="item-info">
-                            <h4>Segredos guardados</h4>
-                            <p class="local">
-                                <svg viewBox="0 0 24 24">
-                                    <circle cx="12" cy="12" r="10"></circle>
-                                    <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
-                                </svg>
-                                Área de exploração • Espaço reservado
-                            </p>
-                            <p class="descricao">Leia as pistas que encontrar. Não tenha pressa de sair.</p>
-                        </div>
-                    </div>
-                    <div class="item-dir">
-                        <span class="tipo-badge">
-                            <svg viewBox="0 0 24 24">
-                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-                                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-                            </svg>
-                            COFRE
-                        </span>
-                    </div>
-                </div>
-            </div>
+            <div class="lista" id="div_lista_conquistas"></div>
         </section>
 
         <div class="navegacao">
@@ -392,3 +164,68 @@
 </body>
 
 </html>
+
+<script>
+    function carregarConquistaBD() {
+        fetch("/conquistas/carregarConquistasBD", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                capitulo: 9
+            })
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO carregarConquistasBD() no html!");
+
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(function (conquistas) {
+                    console.log("Conquistas que vieram do banco:", conquistas);
+
+                    let container = document.getElementById("div_lista_conquistas");
+                    container.innerHTML = "";
+
+                    if (conquistas.length == 0) {
+                        container.innerHTML = "<p style='color: #888;'>Nenhum colecionável encontrado para este capítulo.</p>";
+                    } else {
+                        for (let i = 0; i < conquistas.length; i++) {
+                            let item = conquistas[i];
+
+                            container.innerHTML += `
+                                <div class="item">
+                                    <div class="item-esq">
+                                        <div class="item-check"></div>
+                                        <div class="item-info">
+                                            <h4>${item.titulo}</h4>
+                                            <p class="local">
+                                                <svg viewBox="0 0 24 24">
+                                                    <circle cx="12" cy="12" r="10"></circle>
+                                                    <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
+                                                </svg>
+                                                ${item.subtitulo}
+                                            </p>
+                                            <p class="descricao">${item.descricao}</p>
+                                        </div>
+                                    </div>
+                                    <div class="item-dir">
+                                        <span class="tipo-badge">${item.tipo.toUpperCase()}</span>
+                                    </div>
+                                </div>
+                            `;
+                        }
+                    }
+                });
+            } else {
+                console.log("Houve um erro ao tentar carregar as conquistas no BD!");
+
+                resposta.text().then(function (texto) {
+                    console.error(texto);
+                });
+            }
+        }).catch(function (erro) {
+            console.log(erro);
+        });
+    }
+</script>
