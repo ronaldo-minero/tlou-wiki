@@ -8,8 +8,10 @@ CREATE TABLE usuario (
     email VARCHAR(100) UNIQUE NOT NULL,
     senha VARCHAR(100) NOT NULL,
     spoiler TINYINT DEFAULT 0,
+    ultimoCapitulo INT DEFAULT 1,
     dtCriacao DATETIME DEFAULT CURRENT_TIMESTAMP,
-    CONSTRAINT chk_spoiler CHECK (spoiler IN (0, 1))
+    CONSTRAINT chk_spoiler CHECK (spoiler IN (0, 1)),
+    CONSTRAINT chk_ultimoCapitulo CHECK (ultimoCapitulo BETWEEN 1 AND 12)
 );
 
 CREATE TABLE conquista (
@@ -36,16 +38,18 @@ CREATE TABLE conquista (
 CREATE TABLE usuario_conquista (
     fkUsuario INT NOT NULL,
     fkConquista INT NOT NULL,
+    statusMarcado TINYINT NOT NULL DEFAULT 0,
     dtDesbloqueio DATETIME DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (fkUsuario, fkConquista),
     CONSTRAINT fk_uc_usuario FOREIGN KEY (fkUsuario) REFERENCES usuario(idUsuario) ON DELETE CASCADE,
-    CONSTRAINT fk_uc_conquista FOREIGN KEY (fkConquista) REFERENCES conquista(idConquista) ON DELETE CASCADE
+    CONSTRAINT fk_uc_conquista FOREIGN KEY (fkConquista) REFERENCES conquista(idConquista) ON DELETE CASCADE,
+    CONSTRAINT chk_statusMarcado CHECK (statusMarcado IN (0, 1))
 );
 
-INSERT INTO usuario (apelido, email, senha, spoiler) VALUES
-('Joel Miller', 'joel@tlou.com', '123456', 0),
-('Ellie Williams', 'ellie@tlou.com', '123456', 1),
-('Ronaldo Teste', 't@t', 't', 0);
+INSERT INTO usuario (apelido, email, senha, spoiler, ultimoCapitulo) VALUES
+('Joel Miller', 'joel@tlou.com', '123456', 0, 4),
+('Ellie Williams', 'ellie@tlou.com', '123456', 1, 1),
+('Ronaldo Teste', 't@t', 't', 0, 1);
 
 INSERT INTO conquista (capitulo, tipo, titulo, subtitulo, descricao) VALUES
 (2, 'Artefato', 'Aviso de Toque de Recolher', 'Zona de Quarentena', 'No mural de avisos perto do posto de controle, logo após a primeira cutscene.'),
@@ -274,16 +278,16 @@ INSERT INTO conquista (capitulo, tipo, titulo, subtitulo, descricao) VALUES
 INSERT INTO conquista (capitulo, tipo, titulo, subtitulo, descricao) VALUES
 (12, 'Quadrinho', 'Savage Starlight: Catalysis', 'Jackson', 'Na caminhonete abandonada junto à cerca na trilha para Jackson.');
 
-INSERT INTO usuario_conquista (fkUsuario, fkConquista, dtDesbloqueio) VALUES
-(1, 1, '2026-11-17 19:10:00'),
-(1, 2, '2026-11-17 19:25:30'),
-(1, 7, '2026-11-17 19:40:15'),
-(1, 12, '2026-11-17 20:00:00');
+INSERT INTO usuario_conquista (fkUsuario, fkConquista, statusMarcado, dtDesbloqueio) VALUES
+(1, 1, 1, '2026-11-17 19:10:00'),
+(1, 2, 1, '2026-11-17 19:25:30'),
+(1, 7, 1, '2026-11-17 19:40:15'),
+(1, 12, 1, '2026-11-17 20:00:00');
 
-INSERT INTO usuario_conquista (fkUsuario, fkConquista, dtDesbloqueio) VALUES
-(3, 1, CURRENT_TIMESTAMP),
-(3, 2, CURRENT_TIMESTAMP),
-(3, 7, CURRENT_TIMESTAMP);
+INSERT INTO usuario_conquista (fkUsuario, fkConquista, statusMarcado, dtDesbloqueio) VALUES
+(3, 1, 1, CURRENT_TIMESTAMP),
+(3, 2, 1, CURRENT_TIMESTAMP),
+(3, 7, 1, CURRENT_TIMESTAMP);
 
 CREATE OR REPLACE VIEW vw_historico_conquistas AS
 SELECT 
@@ -298,15 +302,16 @@ SELECT
     DATE_FORMAT(uc.dtDesbloqueio, '%d/%m/%Y %H:%i') AS dtFormatada
 FROM usuario_conquista uc
 JOIN usuario u ON uc.fkUsuario = u.idUsuario
-JOIN conquista c ON uc.fkConquista = c.idConquista;
+JOIN conquista c ON uc.fkConquista = c.idConquista
+WHERE uc.statusMarcado = 1;
 
 CREATE OR REPLACE VIEW vw_progresso_usuarios AS
 SELECT 
     u.idUsuario,
     u.apelido,
-    COUNT(uc.fkConquista) AS totalColecionaveis,
-    ROUND((COUNT(uc.fkConquista) / 205) * 100, 1) AS percentualTotal,
-    MAX(uc.dtDesbloqueio) AS ultimoDesbloqueio
+    COUNT(CASE WHEN uc.statusMarcado = 1 THEN uc.fkConquista END) AS totalColecionaveis,
+    ROUND((COUNT(CASE WHEN uc.statusMarcado = 1 THEN uc.fkConquista END) / 205) * 100, 1) AS percentualTotal,
+    MAX(CASE WHEN uc.statusMarcado = 1 THEN uc.dtDesbloqueio END) AS ultimoDesbloqueio
 FROM usuario u
 LEFT JOIN usuario_conquista uc ON u.idUsuario = uc.fkUsuario
 GROUP BY u.idUsuario, u.apelido;
