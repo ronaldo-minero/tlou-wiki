@@ -15,7 +15,7 @@
     <script src="../js/sessao.js"></script>
 </head>
 
-<body onload="validarSessao()">
+<body onload="validarSessao(), carregarUltimoCapitulo()">
 
     <nav class="navbar">
         <div class="logo">
@@ -175,9 +175,9 @@
                     </div>
                 </div>
 
-                <div class="proximo">
+                <div class="proximo" id="div_card_ultimo">
                     <div class="proximo-topo">
-                        <span class="label">PRÓXIMO CAPÍTULO</span>
+                        <span class="label">ÚLTIMO CAPÍTULO</span>
                         <svg viewBox="0 0 24 24">
                             <line x1="7" y1="17" x2="17" y2="7"></line>
                             <polyline points="7 7 17 7 17 17"></polyline>
@@ -185,10 +185,10 @@
                     </div>
 
                     <div class="proximo-conteudo">
-                        <span class="label">04 / VERÃO • EM ANDAMENTO</span>
-                        <h2>A CIDADE DE BILL</h2>
-                        <p class="text">3 de 8 itens encontrados na amostra.</p>
-                        <button class="btn btn-primary" onclick="window.location.href='../capitulos/capitulo-04.html'">
+                        <span class="label" id="span_estacao_ultimo">04 / VERÃO • EM ANDAMENTO</span>
+                        <h2 id="h2_nome_ultimo">A CIDADE DE BILL</h2>
+                        <p class="text" id="p_itens_ultimo">3 de 8 itens encontrados na amostra.</p>
+                        <button class="btn btn-primary" id="btn_continuar_checklist" onclick="window.location.href='../capitulos/capitulo-04.html'">
                             CONTINUAR CHECKLIST
                             <svg viewBox="0 0 24 24">
                                 <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -509,6 +509,58 @@
     <script>
         web_usuario.innerHTML = sessionStorage.APELIDO_USUARIO;
         web_usuario_nav.innerHTML = sessionStorage.APELIDO_USUARIO;
+
+        let listaCapitulos = [
+            { numero: 1, nome: "Cidade natal", estacao: "Verão", imagem: "cidade-natal.webp", totalItens: 0 },
+            { numero: 2, nome: "A zona de quarentena", estacao: "Verão", imagem: "zona-de-quarentena.jpg", totalItens: 11 },
+            { numero: 3, nome: "A periferia", estacao: "Verão", imagem: "periferia.jpg", totalItens: 12 },
+            { numero: 4, nome: "A cidade de Bill", estacao: "Verão", imagem: "cidade-de-bill.png", totalItens: 11 },
+            { numero: 5, nome: "Pittsburgh", estacao: "Verão", imagem: "pittsburgh.png", totalItens: 21 },
+            { numero: 6, nome: "Os subúrbios", estacao: "Verão", imagem: "suburbios.jpg", totalItens: 15 },
+            { numero: 7, nome: "Represa do Tommy", estacao: "Outono", imagem: "represa-de-tommy.jpg", totalItens: 8 },
+            { numero: 8, nome: "A universidade", estacao: "Outono", imagem: "universidade.jpg", totalItens: 14 },
+            { numero: 9, nome: "Resort à beira do lago", estacao: "Inverno", imagem: "resort-lago.jpg", totalItens: 12 },
+            { numero: 10, nome: "Depósito de ônibus", estacao: "Primavera", imagem: "terminal-rodoviario.jpg", totalItens: 14 },
+            { numero: 11, nome: "O laboratório dos Vagalumes", estacao: "Primavera", imagem: "laboratorio-vagalumes.jpg", totalItens: 5 },
+            { numero: 12, nome: "Jackson", estacao: "Epílogo", imagem: "jackson.png", totalItens: 1 }
+        ];
+
+        function carregarUltimoCapitulo() {
+            let idUsuario = sessionStorage.ID_USUARIO;
+
+            if (idUsuario == undefined) {
+                return;
+            }
+
+            fetch(`/usuarios/obterUltimoCapitulo/${idUsuario}`)
+                .then(function (resposta) {
+                    if (resposta.ok) {
+                        resposta.json().then(function (dados) {
+                            let num = dados.ultimoCapitulo || 1;
+                            let cap = listaCapitulos[num - 1];
+                            let numFormatado = num < 10 ? "0" + num : "" + num;
+
+                            document.getElementById("span_estacao_ultimo").innerHTML = `${numFormatado} / ${cap.estacao.toUpperCase()} • EM ANDAMENTO`;
+                            document.getElementById("h2_nome_ultimo").innerHTML = cap.nome.toUpperCase();
+                            document.getElementById("p_itens_ultimo").innerHTML = `${cap.totalItens} colecionáveis nesta etapa.`;
+
+                            document.getElementById("btn_continuar_checklist").onclick = function () {
+                                window.location.href = `../capitulos/capitulo-${numFormatado}.html`;
+                            };
+
+                            let divCard = document.getElementById("div_card_ultimo");
+                            if (divCard) {
+                                divCard.style.backgroundImage = `linear-gradient(180deg, rgba(12, 14, 13, 0.35) 0%, rgba(12, 14, 13, 0.92) 85%), url('../assets/${cap.imagem}')`;
+                            }
+                        });
+                    } else {
+                        console.log("Erro ao carregar último capítulo.");
+                    }
+                })
+                .catch(function (erro) {
+                    console.log("Erro ao buscar último capítulo:", erro);
+                });
+        }
 
         const ctxProgresso = document.getElementById('graficoProgresso');
 

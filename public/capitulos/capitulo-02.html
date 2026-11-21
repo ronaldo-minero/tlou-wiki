@@ -167,6 +167,8 @@
 
 <script>
     function carregarConquistaBD() {
+        salvarUltimoCapitulo(2);
+
         fetch("/conquistas/carregarConquistasBD", {
             method: "POST",
             headers: {
@@ -176,53 +178,46 @@
                 capitulo: 2
             })
         }).then(function (resposta) {
-            console.log("ESTOU NO THEN DO carregarConquistasBD() no html!");
-
             if (resposta.ok) {
-                console.log(resposta);
-
                 resposta.json().then(function (conquistas) {
-                    console.log("Conquistas que vieram do banco:", conquistas);
-
                     let container = document.getElementById("div_lista_conquistas");
                     container.innerHTML = "";
 
                     if (conquistas.length == 0) {
                         container.innerHTML = "<p style='color: #888;'>Nenhum colecionável encontrado para este capítulo.</p>";
-                    } else {
-                        for (let i = 0; i < conquistas.length; i++) {
-                            let item = conquistas[i];
+                        return;
+                    }
 
-                            container.innerHTML += `
-                                <div class="item">
-                                    <div class="item-esq">
-                                        <div class="item-check"></div>
-                                        <div class="item-info">
-                                            <h4>${item.titulo}</h4>
-                                            <p class="local">
-                                                <svg viewBox="0 0 24 24">
-                                                    <circle cx="12" cy="12" r="10"></circle>
-                                                    <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
-                                                </svg>
-                                                ${item.subtitulo}
-                                            </p>
-                                            <p class="descricao">${item.descricao}</p>
-                                        </div>
-                                    </div>
-                                    <div class="item-dir">
-                                        <span class="tipo-badge">${item.tipo.toUpperCase()}</span>
+                    for (let i = 0; i < conquistas.length; i++) {
+                        let item = conquistas[i];
+
+                        container.innerHTML += `
+                            <label class="item">
+                                <div class="item-esq">
+                                    <input type="checkbox" class="check-conquista" data-id="${item.idConquista}">
+                                    <div class="item-info">
+                                        <h4>${item.titulo}</h4>
+                                        <p class="local">
+                                            <svg viewBox="0 0 24 24">
+                                                <circle cx="12" cy="12" r="10"></circle>
+                                                <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
+                                            </svg>
+                                            ${item.subtitulo}
+                                        </p>
+                                        <p class="descricao">${item.descricao}</p>
                                     </div>
                                 </div>
-                            `;
-                        }
+                                <div class="item-dir">
+                                    <span class="tipo-badge">${item.tipo.toUpperCase()}</span>
+                                </div>
+                            </label>
+                        `;
                     }
+
+                    configurarChecks();
                 });
             } else {
                 console.log("Houve um erro ao tentar carregar as conquistas no BD!");
-
-                resposta.text().then(function (texto) {
-                    console.error(texto);
-                });
             }
         }).catch(function (erro) {
             console.log(erro);

@@ -518,6 +518,7 @@ main {
     border-radius: 2px;
     padding: 16px 20px;
     transition: border-color 0.2s;
+    cursor: pointer;
 }
 
 .item:hover {
@@ -530,30 +531,14 @@ main {
     gap: 14px;
 }
 
-.item-check {
+.item input[type="checkbox"],
+.check-conquista {
     width: 18px;
     height: 18px;
     margin-top: 2px;
-    border-radius: 2px;
-    border: 1px solid var(--esmaecido);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    accent-color: var(--dourado);
+    cursor: pointer;
     flex-shrink: 0;
-    background: var(--fundo-alt);
-}
-
-.item-check.marcado {
-    background: var(--dourado);
-    border-color: var(--dourado);
-    color: var(--fundo);
-}
-
-.item-check svg {
-    width: 12px;
-    height: 12px;
-    stroke: var(--fundo);
-    stroke-width: 3;
 }
 
 .item-info h4 {
