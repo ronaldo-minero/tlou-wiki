@@ -12,4 +12,12 @@ router.post("/autenticar", function (req, res) {
     usuarioController.autenticar(req, res);
 });
 
+router.post("/atualizarUltimoCapitulo", function (req, res) {
+    usuarioController.atualizarUltimoCapitulo(req, res);
+});
+
+router.get("/obterUltimoCapitulo/:idUsuario", function (req, res) {
+    usuarioController.obterUltimoCapitulo(req, res);
+});
+
 module.exports = router;

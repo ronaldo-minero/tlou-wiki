@@ -75,7 +75,50 @@ function cadastrar(req, res) {
     }
 }
 
+function atualizarUltimoCapitulo(req, res) {
+    let idUsuario = req.body.idUsuario;
+    let capitulo = req.body.capitulo;
+
+    if (idUsuario == undefined || capitulo == undefined) {
+        res.status(400).send("Dados undefined");
+        return;
+    }
+
+    usuarioModel.atualizarUltimoCapitulo(idUsuario, capitulo)
+        .then(function (resultado) {
+            res.json(resultado);
+        })
+        .catch(function (erro) {
+            console.log(erro);
+            res.status(500).json(erro.sqlMessage);
+        });
+}
+
+function obterUltimoCapitulo(req, res) {
+    let idUsuario = req.params.idUsuario;
+
+    if (idUsuario == undefined) {
+        res.status(400).send("idUsuario undefined");
+        return;
+    }
+
+    usuarioModel.obterUltimoCapitulo(idUsuario)
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.json(resultado[0]);
+            } else {
+                res.json({ ultimoCapitulo: 1 });
+            }
+        })
+        .catch(function (erro) {
+            console.log(erro);
+            res.status(500).json(erro.sqlMessage);
+        });
+}
+
 module.exports = {
     autenticar,
-    cadastrar
-}
+    cadastrar,
+    atualizarUltimoCapitulo,
+    obterUltimoCapitulo
+};
