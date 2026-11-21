@@ -453,10 +453,6 @@ nav {
     border-color: var(--dourado-alfa);
 }
 
-.card.ativo {
-    border-color: var(--dourado);
-}
-
 .image {
     position: relative;
     height: 110px;
@@ -502,17 +498,6 @@ nav {
     color: var(--primavera);
 }
 
-.status-tag {
-    padding: 3px 8px;
-    background: rgba(12, 14, 13, 0.85);
-    border: 1px solid var(--dourado-alfa);
-    border-radius: 2px;
-    font-size: 9px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    color: var(--dourado);
-}
-
 .card-conteudo {
     padding: 18px 16px;
     display: flex;
@@ -529,10 +514,6 @@ nav {
 .card-rodape .label {
     font-size: 10px;
     color: var(--esmaecido);
-}
-
-.card.ativo .card-rodape .label {
-    color: var(--dourado);
 }
 
 .card-rodape .text {

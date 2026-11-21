@@ -177,15 +177,11 @@
 
                 <div class="proximo" id="div_card_ultimo">
                     <div class="proximo-topo">
-                        <span class="label">ÚLTIMO CAPÍTULO</span>
-                        <svg viewBox="0 0 24 24">
-                            <line x1="7" y1="17" x2="17" y2="7"></line>
-                            <polyline points="7 7 17 7 17 17"></polyline>
-                        </svg>
+                        <span class="label">ÚLTIMO ACESSO</span>
                     </div>
 
                     <div class="proximo-conteudo">
-                        <span class="label" id="span_estacao_ultimo">04 / VERÃO • EM ANDAMENTO</span>
+                        <span class="label" id="span_estacao_ultimo">04 / VERÃO</span>
                         <h2 id="h2_nome_ultimo">A CIDADE DE BILL</h2>
                         <p class="text" id="p_itens_ultimo">3 de 8 itens encontrados na amostra.</p>
                         <button class="btn btn-primary" id="btn_continuar_checklist" onclick="window.location.href='../capitulos/capitulo-04.html'">
@@ -267,12 +263,11 @@
                     </div>
                 </div>
 
-                <div class="card verao ativo" onclick="window.location.href='../capitulos/capitulo-04.html'">
+                <div class="card verao" onclick="window.location.href='../capitulos/capitulo-04.html'">
                     <div class="image">
                         <img src="../assets/cidade-de-bill.png" alt="A cidade de Bill">
                         <div class="cap">
                             <span class="label">04 / VERÃO</span>
-                            <span class="status-tag">EM ANDAMENTO</span>
                         </div>
                     </div>
                     <div class="card-conteudo">
@@ -540,7 +535,7 @@
                             let cap = listaCapitulos[num - 1];
                             let numFormatado = num < 10 ? "0" + num : "" + num;
 
-                            document.getElementById("span_estacao_ultimo").innerHTML = `${numFormatado} / ${cap.estacao.toUpperCase()} • EM ANDAMENTO`;
+                            document.getElementById("span_estacao_ultimo").innerHTML = `${numFormatado} / ${cap.estacao.toUpperCase()}`;
                             document.getElementById("h2_nome_ultimo").innerHTML = cap.nome.toUpperCase();
                             document.getElementById("p_itens_ultimo").innerHTML = `${cap.totalItens} colecionáveis nesta etapa.`;
 
