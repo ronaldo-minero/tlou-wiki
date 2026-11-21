@@ -253,6 +253,50 @@ a {
     align-items: center;
 }
 
+.msg-feedback {
+    font-size: 11px;
+    line-height: 1.4;
+    min-height: 16px;
+}
+
+.box-requisitos {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 10px 14px;
+    background: var(--fundo-input);
+    border: 1px solid var(--borda);
+    border-radius: 2px;
+    margin-top: 4px;
+}
+
+.status-linha {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 11px;
+    color: var(--cinza);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.status-texto {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--esmaecido);
+}
+
+.lista-requisitos {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 0;
+    margin: 0;
+    font-size: 11px;
+    color: var(--cinza);
+}
+
 .campo-senha input {
     padding-right: 48px;
 }

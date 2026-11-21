@@ -71,7 +71,7 @@ COMEÇA COM UM PASSO.</h1>
                     <div class="campo">
                         <span for="input_senha" class="label">SENHA</span>
                         <div class="campo-senha">
-                            <input type="password" id="input_senha" placeholder="Digite sua senha" required>
+                            <input type="password" id="input_senha" placeholder="Digite sua senha" oninput="validarForcaSenha()" required>
                             <button type="button" class="btn-olho" onclick="alternarSenha()">
                                 <svg id="icone_olho" viewBox="0 0 24 24">
                                     <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
@@ -79,6 +79,34 @@ COMEÇA COM UM PASSO.</h1>
                                 </svg>
                             </button>
                         </div>
+                        
+                        <div class="box-requisitos">
+                            <div class="status-linha">
+                                <span>Força da senha:</span>
+                                <strong id="span_status_forca" class="status-texto">Aguardando senha</strong>
+                            </div>
+                            <ul class="lista-requisitos">
+                                <li id="req_tamanho">Mínimo de 8 caracteres</li>
+                                <li id="req_maiuscula">Pelo menos uma letra maiúscula</li>
+                                <li id="req_minuscula">Pelo menos uma letra minúscula</li>
+                                <li id="req_numero">Pelo menos um número</li>
+                                <li id="req_especial">Pelo menos um caractere especial (!, @, #, $, etc.)</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="campo">
+                        <span for="input_confirmar_senha" class="label">CONFIRMAR SENHA</span>
+                        <div class="campo-senha">
+                            <input type="password" id="input_confirmar_senha" placeholder="Confirme sua senha" oninput="validarConfirmacaoSenha()" required>
+                            <button type="button" class="btn-olho" onclick="alternarConfirmarSenha()">
+                                <svg id="icone_olho_confirmar" viewBox="0 0 24 24">
+                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                    <circle cx="12" cy="12" r="3"></circle>
+                                </svg>
+                            </button>
+                        </div>
+                        <div id="div_mensagem_confirmar" class="msg-feedback"></div>
                     </div>
 
                     <button onclick="cadastrar()" type="button" class="btn btn-entrar">
@@ -137,64 +165,125 @@ COMEÇA COM UM PASSO.</h1>
             }
         }
 
-        function cadastrar() {
-// aguardar();
+        function alternarConfirmarSenha() {
+            const input = document.getElementById('input_confirmar_senha');
+            const icone = document.getElementById('icone_olho_confirmar');
 
-    //Recupere o valor da nova input pelo nome do id
-    // Agora vá para o método fetch logo abaixo
-    var apelidoVar = input_apelido.value;
-    var emailVar = input_email.value;
-    var senhaVar = input_senha.value;
-
-    // Verificando se há algum campo em branco
-    if (
-      apelidoVar == "" ||
-      emailVar == "" ||
-      senhaVar == ""
-    ) {
-      cardErro.style.display = "block";
-      mensagem_erro.innerHTML =
-        "(Mensagem de erro para todos os campos em branco)";
-
-      return false;
-    } else {
-      setInterval(5000);
-    }
-
-    // Enviando o valor da nova input
-    fetch("/usuarios/cadastrar", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        // crie um atributo que recebe o valor recuperado aqui
-        // Agora vá para o arquivo routes/usuario.js
-        apelidoServer: apelidoVar,
-        emailServer: emailVar,
-        senhaServer: senhaVar,
-      }),
-    })
-      .then(function (resposta) {
-        console.log("resposta: ", resposta);
-
-        if (resposta.ok) {
-
-
-          setTimeout(() => {
-            window.location = "login.html";
-          }, "2000");
-        } else {
-          throw "Houve um erro ao tentar realizar o cadastro!";
+            if (input.type === 'password') {
+                input.type = 'text';
+                icone.innerHTML = '<path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line>';
+            } else {
+                input.type = 'password';
+                icone.innerHTML = '<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle>';
+            }
         }
-      })
-      .catch(function (resposta) {
-        console.log(`#ERRO: ${resposta}`);
-      });
 
-    return false;
+        function validarForcaSenha() {
+            let senha = input_senha.value;
 
+            if (input_confirmar_senha.value.length > 0) {
+                validarConfirmacaoSenha();
+            }
 
+            if (senha.length == 0) {
+                span_status_forca.innerHTML = "Aguardando senha";
+                span_status_forca.style.color = "#959c97";
+
+                req_tamanho.style.color = "#959c97";
+                req_maiuscula.style.color = "#959c97";
+                req_minuscula.style.color = "#959c97";
+                req_numero.style.color = "#959c97";
+                req_especial.style.color = "#959c97";
+                return;
+            }
+
+            let temTamanhoMinimo = senha.length >= 8;
+            let temMaiuscula = /[A-Z]/.test(senha);
+            let temMinuscula = /[a-z]/.test(senha);
+            let temNumero = /[0-9]/.test(senha);
+            let temEspecial = /[^A-Za-z0-9\s]/.test(senha);
+
+            req_tamanho.style.color = temTamanhoMinimo ? "#81c784" : "#e57373";
+            req_maiuscula.style.color = temMaiuscula ? "#81c784" : "#e57373";
+            req_minuscula.style.color = temMinuscula ? "#81c784" : "#e57373";
+            req_numero.style.color = temNumero ? "#81c784" : "#e57373";
+            req_especial.style.color = temEspecial ? "#81c784" : "#e57373";
+
+            let pontos = temTamanhoMinimo + temMaiuscula + temMinuscula + temNumero + temEspecial;
+
+            if (pontos == 5) {
+                span_status_forca.innerHTML = "Senha Forte";
+                span_status_forca.style.color = "#81c784";
+            } else if (pontos >= 3) {
+                span_status_forca.innerHTML = "Senha Média";
+                span_status_forca.style.color = "#fbc02d";
+            } else {
+                span_status_forca.innerHTML = "Senha Fraca";
+                span_status_forca.style.color = "#e57373";
+            }
+        }
+
+        function validarConfirmacaoSenha() {
+            let senha = input_senha.value;
+            let confirmacao = input_confirmar_senha.value;
+
+            if (confirmacao.length == 0) {
+                div_mensagem_confirmar.innerHTML = "";
+                return;
+            }
+
+            if (senha == confirmacao) {
+                div_mensagem_confirmar.innerHTML = "As senhas coincidem";
+                div_mensagem_confirmar.style.color = "#81c784";
+            } else {
+                div_mensagem_confirmar.innerHTML = "As senhas não coincidem";
+                div_mensagem_confirmar.style.color = "#e57373";
+            }
+        }
+
+        function cadastrar() {
+            var apelidoVar = input_apelido.value;
+            var emailVar = input_email.value;
+            var senhaVar = input_senha.value;
+            var confirmacaoVar = input_confirmar_senha.value;
+
+            if (apelidoVar == "" || emailVar == "" || senhaVar == "" || confirmacaoVar == "") {
+                alert("Por favor, preencha todos os campos!");
+                return false;
+            }
+
+            if (senhaVar != confirmacaoVar) {
+                alert("As senhas inseridas não coincidem!");
+                return false;
+            }
+
+            fetch("/usuarios/cadastrar", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    apelidoServer: apelidoVar,
+                    emailServer: emailVar,
+                    senhaServer: senhaVar,
+                }),
+            })
+            .then(function (resposta) {
+                console.log("resposta: ", resposta);
+
+                if (resposta.ok) {
+                    setTimeout(() => {
+                        window.location = "login.html";
+                    }, 1000);
+                } else {
+                    throw "Houve um erro ao tentar realizar o cadastro!";
+                }
+            })
+            .catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+            });
+
+            return false;
         }
     </script>
 
