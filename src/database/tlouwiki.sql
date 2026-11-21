@@ -278,17 +278,6 @@ INSERT INTO conquista (capitulo, tipo, titulo, subtitulo, descricao) VALUES
 INSERT INTO conquista (capitulo, tipo, titulo, subtitulo, descricao) VALUES
 (12, 'Quadrinho', 'Savage Starlight: Catalysis', 'Jackson', 'Na caminhonete abandonada junto à cerca na trilha para Jackson.');
 
-INSERT INTO usuario_conquista (fkUsuario, fkConquista, statusMarcado, dtDesbloqueio) VALUES
-(1, 1, 1, '2026-11-17 19:10:00'),
-(1, 2, 1, '2026-11-17 19:25:30'),
-(1, 7, 1, '2026-11-17 19:40:15'),
-(1, 12, 1, '2026-11-17 20:00:00');
-
-INSERT INTO usuario_conquista (fkUsuario, fkConquista, statusMarcado, dtDesbloqueio) VALUES
-(3, 1, 1, CURRENT_TIMESTAMP),
-(3, 2, 1, CURRENT_TIMESTAMP),
-(3, 7, 1, CURRENT_TIMESTAMP);
-
 CREATE OR REPLACE VIEW vw_historico_conquistas AS
 SELECT 
     uc.fkUsuario,
