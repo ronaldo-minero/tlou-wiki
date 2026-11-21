@@ -321,3 +321,19 @@ SELECT tipo, COUNT(*) AS quantidade FROM conquista GROUP BY tipo ORDER BY quanti
 SELECT COUNT(*) AS totalCatalogo FROM conquista;
 
 SELECT * FROM vw_historico_conquistas WHERE fkUsuario = 3 ORDER BY dtDesbloqueio DESC LIMIT 4;
+
+SELECT capitulo, COUNT(*) AS total_itens 
+FROM conquista 
+GROUP BY capitulo 
+ORDER BY capitulo;
+
+SELECT 
+    c.capitulo,
+    COUNT(c.idConquista) AS total_itens,
+    COUNT(CASE WHEN uc.statusMarcado = 1 THEN 1 END) AS itens_coletados,
+    COUNT(c.idConquista) - COUNT(CASE WHEN uc.statusMarcado = 1 THEN 1 END) AS itens_pendentes,
+    ROUND((COUNT(CASE WHEN uc.statusMarcado = 1 THEN 1 END) / COUNT(c.idConquista)) * 100) AS porcentagem_concluido
+FROM conquista c
+LEFT JOIN usuario_conquista uc ON c.idConquista = uc.fkConquista AND uc.fkUsuario = 1
+GROUP BY c.capitulo
+ORDER BY c.capitulo;

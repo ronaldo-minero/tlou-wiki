@@ -1,4 +1,43 @@
-function configurarChecks() {
+function carregarProgressoCapitulo(capitulo) {
+    let idUsuario = sessionStorage.ID_USUARIO;
+
+    if (idUsuario == undefined) {
+        return;
+    }
+
+    fetch(`/conquistas/obterProgressoCapitulo/${idUsuario}/${capitulo}`)
+        .then(function (resposta) {
+            if (resposta.ok) {
+                resposta.json().then(function (dados) {
+                    let elNumero = document.getElementById("div_progresso_numero");
+                    let elPorcentagem = document.getElementById("span_progresso_porcentagem");
+                    let elBarra = document.getElementById("div_barra_preenchida");
+                    let elPendentes = document.getElementById("span_progresso_pendentes");
+
+                    if (elNumero) {
+                        elNumero.innerHTML = `${dados.coletados} / ${dados.total} itens`;
+                    }
+
+                    if (elPorcentagem) {
+                        elPorcentagem.innerHTML = `${dados.porcentagem}% CONCLUÍDO`;
+                    }
+
+                    if (elBarra) {
+                        elBarra.style.width = `${dados.porcentagem}%`;
+                    }
+
+                    if (elPendentes) {
+                        elPendentes.innerHTML = `${dados.pendentes} ITENS PENDENTES`;
+                    }
+                });
+            }
+        })
+        .catch(function (erro) {
+            console.log("Erro ao carregar estatísticas do capítulo:", erro);
+        });
+}
+
+function configurarChecks(capitulo) {
     let checks = document.querySelectorAll(".check-conquista");
 
     for (let i = 0; i < checks.length; i++) {
@@ -17,6 +56,8 @@ function configurarChecks() {
                     idConquistaServer: idConquista,
                     statusServer: status
                 })
+            }).then(function () {
+                carregarProgressoCapitulo(capitulo);
             });
         });
     }
@@ -35,6 +76,7 @@ function configurarChecks() {
                     }
                 }
             }
+            carregarProgressoCapitulo(capitulo);
         })
         .catch(function (erro) {
             console.log("Erro ao carregar checks:", erro);

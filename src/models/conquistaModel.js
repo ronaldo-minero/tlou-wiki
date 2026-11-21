@@ -40,8 +40,24 @@ function listar(idUsuario) {
     return database.executar(instrucaoSql);
 }
 
+function obterProgressoCapitulo(idUsuario, capitulo) {
+    var instrucaoSql = `
+        SELECT 
+            COUNT(c.idConquista) AS total,
+            COUNT(uc.fkConquista) AS coletados
+        FROM conquista c
+        LEFT JOIN usuario_conquista uc ON c.idConquista = uc.fkConquista 
+            AND uc.fkUsuario = ${idUsuario} 
+            AND uc.statusMarcado = 1
+        WHERE c.capitulo = ${capitulo};
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 module.exports = {
     carregarConquistasBD,
     inserir,
-    listar
+    listar,
+    obterProgressoCapitulo
 };

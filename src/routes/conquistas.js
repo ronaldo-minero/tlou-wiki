@@ -14,4 +14,8 @@ router.get("/listar/:idUsuario", function (req, res) {
     conquistaController.listar(req, res);
 });
 
+router.get("/obterProgressoCapitulo/:idUsuario/:capitulo", function (req, res) {
+    conquistaController.obterProgressoCapitulo(req, res);
+});
+
 module.exports = router;

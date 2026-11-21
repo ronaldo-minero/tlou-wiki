@@ -64,10 +64,6 @@
             <img class="banner-img" src="../assets/laboratorio-vagalumes.jpg" alt="O laboratório dos Vagalumes">
             <div class="banner-overlay"></div>
             <div class="banner-conteudo">
-                <div class="banner-tags">
-                    <span class="tag">11 / PRIMAVERA / SAINT MARY'S</span>
-                    <span class="tag ">NÃO INICIADO</span>
-                </div>
                 <h1>O LABORATÓRIO DOS VAGALUMES</h1>
                 <p class="sinopse">No hospital Saint Mary, Joel enfrenta a decisão mais difícil de sua vida para salvar Ellie.</p>
             </div>
@@ -76,18 +72,18 @@
         <section class="progresso-caixa">
             <div class="progresso-item progresso-esq">
                 <span class="label">PROGRESSO DA AMOSTRA</span>
-                <div class="numero">0 / 1 item</div>
+                <div class="numero" id="div_progresso_numero">0 / 0 itens</div>
             </div>
 
             <div class="progresso-barra-meio">
-                <span class="label">0% CONCLUÍDO</span>
+                <span class="label" id="span_progresso_porcentagem">0% CONCLUÍDO</span>
                 <div class="barra">
-                    <div class="preenchido" style="width: 0%"></div>
+                    <div class="preenchido" id="div_barra_preenchida" style="width: 0%"></div>
                 </div>
             </div>
 
             <div class="progresso-item progresso-dir">
-                <span class="label">1 ITEM PENDENTE</span>
+                <span class="label" id="span_progresso_pendentes">0 ITENS PENDENTES</span>
             </div>
         </section>
 
@@ -106,12 +102,6 @@
                 </div>
             </div>
 
-            <div class="filtros-dir">
-                <label class="filtro-checkbox">
-                    <input type="checkbox">
-                    <span>Mostrar apenas pendentes</span>
-                </label>
-            </div>
         </section>
 
         <section class="grupo">
@@ -185,6 +175,7 @@
 
                     if (conquistas.length == 0) {
                         container.innerHTML = "<p style='color: #888;'>Nenhum colecionável encontrado para este capítulo.</p>";
+                        carregarProgressoCapitulo(11);
                         return;
                     }
 
@@ -214,7 +205,7 @@
                         `;
                     }
 
-                    configurarChecks();
+                    configurarChecks(11);
                 });
             } else {
                 console.log("Houve um erro ao tentar carregar as conquistas no BD!");

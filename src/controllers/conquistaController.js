@@ -50,8 +50,39 @@ function listar(req, res) {
         });
 }
 
+function obterProgressoCapitulo(req, res) {
+    let idUsuario = req.params.idUsuario;
+    let capitulo = req.params.capitulo;
+
+    if (idUsuario == undefined || capitulo == undefined) {
+        res.status(400).send("idUsuario ou capitulo está undefined!");
+        return;
+    }
+
+    conquistaModel.obterProgressoCapitulo(idUsuario, capitulo)
+        .then(function (resultado) {
+            let dados = resultado[0] || {};
+            let total = dados.total || 0;
+            let coletados = dados.coletados || 0;
+            let pendentes = total - coletados;
+            let porcentagem = total > 0 ? Math.round((coletados / total) * 100) : 100;
+
+            res.status(200).json({
+                total: total,
+                coletados: coletados,
+                pendentes: pendentes,
+                porcentagem: porcentagem
+            });
+        })
+        .catch(function (erro) {
+            console.log(erro);
+            res.status(500).json(erro.sqlMessage);
+        });
+}
+
 module.exports = {
     carregarConquistasBD,
     inserir,
-    listar
+    listar,
+    obterProgressoCapitulo
 };
