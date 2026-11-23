@@ -13,19 +13,20 @@
     <link rel="stylesheet" href="../styles/dashboard.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="../js/sessao.js"></script>
+    <script src="../js/dashboard.js"></script>
 </head>
 
-<body onload="validarSessao(), carregarUltimoCapitulo()">
+<body onload="validarSessao(), carregarDashboard()">
 
     <nav class="navbar">
-        <div class="logo">
+        <a href="../index.html" class="logo">
             <div class="icon">
                 <img src="../assets/logo.png" alt="Logo Olhe para a Luz">
             </div>
             <div>
                 <h2>OLHE PARA A LUZ</h2>
             </div>
-        </div>
+        </a>
 
         <ul class="links">
             <li><a class="label ativo" href="#inicio">DASHBOARD</a></li>
@@ -63,115 +64,26 @@
 
             <div class="resumo">
                 <div class="progresso">
-                    <span class="label">PROGRESSO DA AMOSTRA</span>
+                    <span class="label">PROGRESSO TOTAL</span>
 
                     <div class="grafico-box">
                         <canvas id="graficoProgresso"></canvas>
                         <div class="grafico-centro">
-                            <h2>47%</h2>
+                            <h2 id="h2_porcentagem_amostra">0%</h2>
                             <span class="label">CONCLUÍDO</span>
                         </div>
                     </div>
 
                     <div class="progresso-info">
-                        <p class="text"><strong>15 de 32</strong> itens da amostra</p>
-                        <span class="label">03 / 12 CAPÍTULOS CONCLUÍDOS</span>
+                        <p class="text"><strong id="strong_itens_amostra">0 de 0</strong> itens da amostra</p>
+                        <span class="label" id="span_capitulos_concluidos">00 / 12 CAPÍTULOS CONCLUÍDOS</span>
                     </div>
                 </div>
 
                 <div class="tipos">
                     <span class="label">POR TIPO DE COLECIONÁVEL</span>
 
-                    <div class="lista-tipos">
-                        <div class="tipo">
-                            <div class="tipo-topo">
-                                <p>Artefatos</p>
-                                <span>5/10</span>
-                            </div>
-                            <div class="barra">
-                                <div class="preenchido" style="width: 50%"></div>
-                            </div>
-                        </div>
-
-                        <div class="tipo">
-                            <div class="tipo-topo">
-                                <p>Pingentes</p>
-                                <span>3/6</span>
-                            </div>
-                            <div class="barra">
-                                <div class="preenchido" style="width: 50%"></div>
-                            </div>
-                        </div>
-
-                        <div class="tipo">
-                            <div class="tipo-topo">
-                                <p>Quadrinhos</p>
-                                <span>1/3</span>
-                            </div>
-                            <div class="barra">
-                                <div class="preenchido" style="width: 33%"></div>
-                            </div>
-                        </div>
-
-                        <div class="tipo">
-                            <div class="tipo-topo">
-                                <p>Manuais</p>
-                                <span>1/3</span>
-                            </div>
-                            <div class="barra">
-                                <div class="preenchido" style="width: 33%"></div>
-                            </div>
-                        </div>
-
-                        <div class="tipo">
-                            <div class="tipo-topo">
-                                <p>Ferramentas</p>
-                                <span>1/2</span>
-                            </div>
-                            <div class="barra">
-                                <div class="preenchido" style="width: 50%"></div>
-                            </div>
-                        </div>
-
-                        <div class="tipo">
-                            <div class="tipo-topo">
-                                <p>Conversas</p>
-                                <span>2/3</span>
-                            </div>
-                            <div class="barra">
-                                <div class="preenchido" style="width: 66%"></div>
-                            </div>
-                        </div>
-
-                        <div class="tipo">
-                            <div class="tipo-topo">
-                                <p>Piadas da Ellie</p>
-                                <span>1/2</span>
-                            </div>
-                            <div class="barra">
-                                <div class="preenchido" style="width: 50%"></div>
-                            </div>
-                        </div>
-
-                        <div class="tipo">
-                            <div class="tipo-topo">
-                                <p>Portas de faca</p>
-                                <span>1/2</span>
-                            </div>
-                            <div class="barra">
-                                <div class="preenchido" style="width: 50%"></div>
-                            </div>
-                        </div>
-
-                        <div class="tipo">
-                            <div class="tipo-topo">
-                                <p>Cofres</p>
-                                <span>0/1</span>
-                            </div>
-                            <div class="barra">
-                                <div class="preenchido" style="width: 0%"></div>
-                            </div>
-                        </div>
+                    <div class="lista-tipos" id="div_lista_tipos">
                     </div>
                 </div>
 
@@ -500,82 +412,3 @@
 </body>
 
 </html>
-
-    <script>
-        web_usuario.innerHTML = sessionStorage.APELIDO_USUARIO;
-        web_usuario_nav.innerHTML = sessionStorage.APELIDO_USUARIO;
-
-        let listaCapitulos = [
-            { numero: 1, nome: "Cidade natal", estacao: "Verão", imagem: "cidade-natal.webp", totalItens: 0 },
-            { numero: 2, nome: "A zona de quarentena", estacao: "Verão", imagem: "zona-de-quarentena.jpg", totalItens: 11 },
-            { numero: 3, nome: "A periferia", estacao: "Verão", imagem: "periferia.jpg", totalItens: 12 },
-            { numero: 4, nome: "A cidade de Bill", estacao: "Verão", imagem: "cidade-de-bill.png", totalItens: 11 },
-            { numero: 5, nome: "Pittsburgh", estacao: "Verão", imagem: "pittsburgh.png", totalItens: 21 },
-            { numero: 6, nome: "Os subúrbios", estacao: "Verão", imagem: "suburbios.jpg", totalItens: 15 },
-            { numero: 7, nome: "Represa do Tommy", estacao: "Outono", imagem: "represa-de-tommy.jpg", totalItens: 8 },
-            { numero: 8, nome: "A universidade", estacao: "Outono", imagem: "universidade.jpg", totalItens: 14 },
-            { numero: 9, nome: "Resort à beira do lago", estacao: "Inverno", imagem: "resort-lago.jpg", totalItens: 12 },
-            { numero: 10, nome: "Depósito de ônibus", estacao: "Primavera", imagem: "terminal-rodoviario.jpg", totalItens: 14 },
-            { numero: 11, nome: "O laboratório dos Vagalumes", estacao: "Primavera", imagem: "laboratorio-vagalumes.jpg", totalItens: 5 },
-            { numero: 12, nome: "Jackson", estacao: "Epílogo", imagem: "jackson.png", totalItens: 1 }
-        ];
-
-        function carregarUltimoCapitulo() {
-            let idUsuario = sessionStorage.ID_USUARIO;
-
-            if (idUsuario == undefined) {
-                return;
-            }
-
-            fetch(`/usuarios/obterUltimoCapitulo/${idUsuario}`)
-                .then(function (resposta) {
-                    if (resposta.ok) {
-                        resposta.json().then(function (dados) {
-                            let num = dados.ultimoCapitulo || 1;
-                            let cap = listaCapitulos[num - 1];
-                            let numFormatado = num < 10 ? "0" + num : "" + num;
-
-                            document.getElementById("span_estacao_ultimo").innerHTML = `${numFormatado} / ${cap.estacao.toUpperCase()}`;
-                            document.getElementById("h2_nome_ultimo").innerHTML = cap.nome.toUpperCase();
-                            document.getElementById("p_itens_ultimo").innerHTML = `${cap.totalItens} colecionáveis nesta etapa.`;
-
-                            document.getElementById("btn_continuar_checklist").onclick = function () {
-                                window.location.href = `../capitulos/capitulo-${numFormatado}.html`;
-                            };
-
-                            let divCard = document.getElementById("div_card_ultimo");
-                            if (divCard) {
-                                divCard.style.backgroundImage = `linear-gradient(180deg, rgba(12, 14, 13, 0.35) 0%, rgba(12, 14, 13, 0.92) 85%), url('../assets/${cap.imagem}')`;
-                            }
-                        });
-                    } else {
-                        console.log("Erro ao carregar último capítulo.");
-                    }
-                })
-                .catch(function (erro) {
-                    console.log("Erro ao buscar último capítulo:", erro);
-                });
-        }
-
-        const ctxProgresso = document.getElementById('graficoProgresso');
-
-        new Chart(ctxProgresso, {
-            type: 'doughnut',
-            data: {
-                datasets: [{
-                    data: [47, 53],
-                    backgroundColor: ['#cca248', '#1c221f'],
-                    borderWidth: 0
-                }]
-            },
-            options: {
-                cutout: '90%',
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: { display: false },
-                    tooltip: { enabled: false }
-                }
-            }
-        });
-    </script>
