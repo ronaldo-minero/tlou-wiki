@@ -54,7 +54,7 @@ Tudo isso para tornar a busca pela **Platina** mais organizada, imersiva e segur
 
 | | Funcionalidade | Descrição |
 |---|---|---|
-| 🏠 | **Landing Page** | Sinopse, personagens (Joel, Ellie, Tess e Tommy), estações, tipos de colecionáveis e página "Sobre Mim" |
+| 🏠 | **Landing Page** | Sinopse, personagens (Joel, Ellie, Tess e Tommy), estações e tipos de colecionáveis |
 | 🔐 | **Cadastro e login** | Validação no front-end (JavaScript) e no back-end (API Node.js) |
 | 🎮 | **Seleção de jogo** | *Part I* disponível; *Part II* bloqueado com o aviso "Em breve" |
 | 📊 | **Dashboard** | Gráficos em Chart.js: total encontrado, progresso por capítulo e por tipo, capítulos jogados, avanço até o final e até a Platina, insígnias |
@@ -62,7 +62,6 @@ Tudo isso para tornar a busca pela **Platina** mais organizada, imersiva e segur
 | ✅ | **Checklist persistente** | Marque e desmarque itens, gravando no banco via API sem recarregar a página |
 | 🙈 | **Modo Sem Spoiler** | Oculta resumos e dicas de itens ainda não encontrados até você clicar para revelar; preferência salva no banco |
 | 🍂 | **Linha do Tempo** | Os capítulos na sequência das estações, do Verão à Primavera |
-| 👤 | **Perfil** | Gerenciamento de preferências do usuário |
 
 ---
 
