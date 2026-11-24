@@ -17,8 +17,47 @@ function validarSessao() {
         if (elBUsuario != null) {
             elBUsuario.innerHTML = nome;
         }
+        configurarBotaoSpoiler();
     } else {
         window.location = "../login.html";
+    }
+}
+
+function configurarBotaoSpoiler() {
+    let btnSpoiler = document.querySelector(".modo-spoiler");
+
+    if (btnSpoiler != null) {
+        atualizarBotaoSpoiler();
+        btnSpoiler.onclick = alternarModoSpoiler;
+    }
+}
+
+function atualizarBotaoSpoiler() {
+    let btnSpoiler = document.querySelector(".modo-spoiler");
+    let ativo = sessionStorage.MODO_SPOILER == "true";
+
+    if (btnSpoiler != null) {
+        if (ativo) {
+            btnSpoiler.classList.add("ativo");
+        } else {
+            btnSpoiler.classList.remove("ativo");
+        }
+    }
+}
+
+function alternarModoSpoiler() {
+    let ativo = sessionStorage.MODO_SPOILER == "true";
+
+    if (ativo) {
+        sessionStorage.MODO_SPOILER = "false";
+    } else {
+        sessionStorage.MODO_SPOILER = "true";
+    }
+
+    atualizarBotaoSpoiler();
+
+    if (typeof carregarConquistaBD == "function") {
+        carregarConquistaBD();
     }
 }
 

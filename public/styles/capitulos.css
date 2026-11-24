@@ -175,19 +175,24 @@ nav {
     border: 1px solid var(--borda);
     border-radius: 20px;
     background: var(--fundo-alt);
+    cursor: pointer;
+    user-select: none;
+    transition: border-color 0.2s;
 }
 
 .modo-spoiler .label {
     font-size: 10px;
     color: var(--cinza);
+    transition: color 0.2s;
 }
 
 .chave {
     width: 28px;
     height: 16px;
-    background: var(--dourado);
+    background: var(--esmaecido);
     border-radius: 10px;
     position: relative;
+    transition: background 0.2s;
 }
 
 .chave-bolinha {
@@ -197,7 +202,24 @@ nav {
     border-radius: 50%;
     position: absolute;
     top: 2px;
-    right: 2px;
+    left: 2px;
+    transition: left 0.2s;
+}
+
+.modo-spoiler.ativo {
+    border-color: var(--dourado-alfa);
+}
+
+.modo-spoiler.ativo .label {
+    color: var(--dourado);
+}
+
+.modo-spoiler.ativo .chave {
+    background: var(--dourado);
+}
+
+.modo-spoiler.ativo .chave-bolinha {
+    left: 14px;
 }
 
 .perfil {

@@ -179,8 +179,17 @@
                         return;
                     }
 
+                    let modoSpoilerAtivo = sessionStorage.MODO_SPOILER == "true";
+
                     for (let i = 0; i < conquistas.length; i++) {
                         let item = conquistas[i];
+                        let descricaoExibida = "";
+
+                        if (modoSpoilerAtivo) {
+                            descricaoExibida = "Modo anti-spoiler ativo";
+                        } else {
+                            descricaoExibida = item.descricao;
+                        }
 
                         container.innerHTML += `
                             <label class="item">
@@ -195,7 +204,7 @@
                                             </svg>
                                             ${item.subtitulo}
                                         </p>
-                                        <p class="descricao">${item.descricao}</p>
+                                        <p class="descricao">${descricaoExibida}</p>
                                     </div>
                                 </div>
                                 <div class="item-dir">
