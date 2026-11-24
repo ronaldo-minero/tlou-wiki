@@ -135,65 +135,55 @@
         }
 
         function entrar() {
-        var emailVar = input_email.value;
-        var senhaVar = input_senha.value;
+            var emailVar = input_email.value;
+            var senhaVar = input_senha.value;
 
-        if (emailVar == "" || senhaVar == "") {
-            alert('deu erro chefe')
-            return false;
-        }
-        else {
-            console.log('pra tirar isso dps')
-           // setInterval(sumirMensagem, 5000)
-        }
-
-        console.log("FORM LOGIN: ", emailVar);
-        console.log("FORM SENHA: ", senhaVar);
-
-        fetch("/usuarios/autenticar", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                emailServer: emailVar,
-                senhaServer: senhaVar
-            })
-        }).then(function (resposta) {
-            console.log("ESTOU NO THEN DO entrar()!")
-
-            if (resposta.ok) {
-                console.log(resposta);
-
-                resposta.json().then(json => {
-                    console.log(json);
-                    console.log(JSON.stringify(json));
-                    sessionStorage.EMAIL_USUARIO = json.email;
-                    sessionStorage.APELIDO_USUARIO = json.apelido;
-                    sessionStorage.ID_USUARIO = json.id;
-
-                    setTimeout(function () {
-                        window.location = "./dashboard/dashboard.html";
-                    }, 1000); // apenas para exibir o loading
-
-                });
-
-            } else {
-
-                console.log("Houve um erro ao tentar realizar o login!");
-
-                resposta.text().then(texto => {
-                    console.error(texto);
-                });
+            if (emailVar == "" && senhaVar == "") {
+                alert("Preencha todos os campos!");
+                return false;
+            } else if (emailVar == "") {
+                alert("Preencha o campo de e-mail!");
+                return false;
+            } else if (!emailVar.includes("@") || !emailVar.includes(".")) {
+                alert("E-mail inválido! Digite um e-mail válido.");
+                return false;
+            } else if (senhaVar == "") {
+                alert("Preencha o campo de senha!");
+                return false;
             }
 
-        }).catch(function (erro) {
-            console.log(erro);
-        })
+            fetch("/usuarios/autenticar", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    emailServer: emailVar,
+                    senhaServer: senhaVar
+                })
+            }).then(function (resposta) {
+                if (resposta.ok) {
+                    resposta.json().then(json => {
+                        sessionStorage.EMAIL_USUARIO = json.email;
+                        sessionStorage.APELIDO_USUARIO = json.apelido;
+                        sessionStorage.ID_USUARIO = json.id;
 
-        return false;
+                        alert("Login realizado com sucesso!");
+                        setTimeout(function () {
+                            window.location = "./dashboard/dashboard.html";
+                        }, 1000);
+                    });
+                } else if (resposta.status == 403) {
+                    alert("E-mail ou senha inválidos!");
+                } else {
+                    alert("Houve um erro ao tentar realizar o login!");
+                }
+            }).catch(function (erro) {
+                console.log(erro);
+                alert("Erro ao conectar com o servidor. Tente novamente!");
+            });
 
-
+            return false;
         }
     </script>
 
