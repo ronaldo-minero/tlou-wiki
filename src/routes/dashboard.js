@@ -14,4 +14,8 @@ router.get("/obterUltimosEncontrados/:idUsuario", function (req, res) {
     dashboardController.obterUltimosEncontrados(req, res);
 });
 
+router.get("/obterProgressoCapitulos/:idUsuario", function (req, res) {
+    dashboardController.obterProgressoCapitulos(req, res);
+});
+
 module.exports = router;

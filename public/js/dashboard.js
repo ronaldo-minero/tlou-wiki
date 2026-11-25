@@ -206,6 +206,48 @@ function carregarUltimosEncontrados(idUsuario) {
         });
 }
 
+function carregarProgressoCapitulos(idUsuario) {
+    fetch(`/dashboard/obterProgressoCapitulos/${idUsuario}`)
+        .then(function (resposta) {
+            if (resposta.ok) {
+                resposta.json().then(function (capitulos) {
+                    for (let i = 0; i < capitulos.length; i++) {
+                        let cap = capitulos[i];
+                        let elStatus = document.getElementById(`span_status_cap_${cap.capitulo}`);
+                        let elItens = document.getElementById(`span_itens_cap_${cap.capitulo}`);
+                        let elBarra = document.getElementById(`div_barra_cap_${cap.capitulo}`);
+
+                        if (elStatus) {
+                            if (cap.total == 0) {
+                                elStatus.innerHTML = "SEM COLECIONÁVEIS";
+                            } else if (cap.coletados == cap.total) {
+                                elStatus.innerHTML = "CONCLUÍDO";
+                            } else if (cap.coletados > 0) {
+                                elStatus.innerHTML = "CONTINUAR →";
+                            } else {
+                                elStatus.innerHTML = "NÃO INICIADO";
+                            }
+                        }
+
+                        if (elItens) {
+                            let textoItem = cap.total == 1 ? "item" : "itens";
+                            elItens.innerHTML = `${cap.coletados}/${cap.total} ${textoItem}`;
+                        }
+
+                        if (elBarra) {
+                            elBarra.style.width = `${cap.porcentagem}%`;
+                        }
+                    }
+                });
+            } else {
+                console.log("Erro ao carregar progresso dos capítulos.");
+            }
+        })
+        .catch(function (erro) {
+            console.log("Erro ao buscar progresso dos capítulos:", erro);
+        });
+}
+
 function carregarDashboard() {
     let idUsuario = sessionStorage.ID_USUARIO;
     if (!idUsuario) {
@@ -214,6 +256,7 @@ function carregarDashboard() {
 
     carregarProgressoGeral(idUsuario);
     carregarProgressoTipos(idUsuario);
+    carregarProgressoCapitulos(idUsuario);
     carregarUltimoCapitulo();
     carregarUltimosEncontrados(idUsuario);
 }

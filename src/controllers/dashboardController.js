@@ -117,8 +117,49 @@ function obterUltimosEncontrados(req, res) {
         });
 }
 
+function obterProgressoCapitulos(req, res) {
+    let idUsuario = req.params.idUsuario;
+
+    if (idUsuario == undefined) {
+        res.status(400).send("idUsuario está undefined!");
+        return;
+    }
+
+    dashboardModel.obterCapitulosConcluidos(idUsuario)
+        .then(function (resultado) {
+            let mapaCapitulos = {};
+            for (let i = 0; i < resultado.length; i++) {
+                let cap = resultado[i];
+                mapaCapitulos[cap.capitulo] = {
+                    total: cap.totalCapitulo || 0,
+                    coletados: cap.coletadosCapitulo || 0
+                };
+            }
+
+            let listaCapitulos = [];
+            for (let num = 1; num <= 12; num++) {
+                let dados = mapaCapitulos[num] || { total: 0, coletados: 0 };
+                let porcentagem = dados.total > 0 ? Math.round((dados.coletados / dados.total) * 100) : 0;
+
+                listaCapitulos.push({
+                    capitulo: num,
+                    total: dados.total,
+                    coletados: dados.coletados,
+                    porcentagem: porcentagem
+                });
+            }
+
+            res.status(200).json(listaCapitulos);
+        })
+        .catch(function (erro) {
+            console.log(erro);
+            res.status(500).json(erro.sqlMessage);
+        });
+}
+
 module.exports = {
     obterProgressoGeral,
     obterProgressoTipos,
-    obterUltimosEncontrados
+    obterUltimosEncontrados,
+    obterProgressoCapitulos
 };
