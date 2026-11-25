@@ -10,4 +10,8 @@ router.get("/obterProgressoTipos/:idUsuario", function (req, res) {
     dashboardController.obterProgressoTipos(req, res);
 });
 
+router.get("/obterUltimosEncontrados/:idUsuario", function (req, res) {
+    dashboardController.obterUltimosEncontrados(req, res);
+});
+
 module.exports = router;

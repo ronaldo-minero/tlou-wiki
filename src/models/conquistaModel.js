@@ -18,7 +18,7 @@ function inserir(idUsuario, idConquista, status) {
     return database.executar(instrucaoSql)
         .then(function (resultado) {
             if (resultado.length > 0) {
-                instrucaoSql = `UPDATE usuario_conquista SET statusMarcado = ${status} WHERE fkUsuario = ${idUsuario} AND fkConquista = ${idConquista};`;
+                instrucaoSql = `UPDATE usuario_conquista SET statusMarcado = ${status}, dtDesbloqueio = CURRENT_TIMESTAMP WHERE fkUsuario = ${idUsuario} AND fkConquista = ${idConquista};`;
             } else {
                 instrucaoSql = `INSERT INTO usuario_conquista (fkUsuario, fkConquista, statusMarcado) VALUES (${idUsuario}, ${idConquista}, ${status});`;
             }

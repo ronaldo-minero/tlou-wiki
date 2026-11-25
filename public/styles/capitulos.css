@@ -254,6 +254,7 @@ nav {
     text-transform: uppercase;
     color: var(--esmaecido);
     margin-left: 6px;
+    cursor: pointer;
 }
 
 main {

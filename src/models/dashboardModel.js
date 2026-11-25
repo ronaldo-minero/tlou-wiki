@@ -49,8 +49,27 @@ function obterProgressoTipos(idUsuario) {
     return database.executar(instrucaoSql);
 }
 
+function obterUltimosEncontrados(idUsuario) {
+    var instrucaoSql = `
+        SELECT
+            c.titulo,
+            c.tipo,
+            c.capitulo,
+            DATE_FORMAT(uc.dtDesbloqueio, '%d/%m/%Y %H:%i') AS dataFormatada
+        FROM usuario_conquista uc
+        JOIN conquista c ON c.idConquista = uc.fkConquista
+        WHERE uc.fkUsuario = ${idUsuario}
+            AND uc.statusMarcado = 1
+        ORDER BY uc.dtDesbloqueio DESC
+        LIMIT 10;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 module.exports = {
     obterProgressoGeral,
     obterCapitulosConcluidos,
-    obterProgressoTipos
+    obterProgressoTipos,
+    obterUltimosEncontrados
 };

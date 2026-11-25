@@ -99,7 +99,26 @@ function obterProgressoTipos(req, res) {
         });
 }
 
+function obterUltimosEncontrados(req, res) {
+    let idUsuario = req.params.idUsuario;
+
+    if (idUsuario == undefined) {
+        res.status(400).send("idUsuario está undefined!");
+        return;
+    }
+
+    dashboardModel.obterUltimosEncontrados(idUsuario)
+        .then(function (resultado) {
+            res.status(200).json(resultado);
+        })
+        .catch(function (erro) {
+            console.log(erro);
+            res.status(500).json(erro.sqlMessage);
+        });
+}
+
 module.exports = {
     obterProgressoGeral,
-    obterProgressoTipos
+    obterProgressoTipos,
+    obterUltimosEncontrados
 };

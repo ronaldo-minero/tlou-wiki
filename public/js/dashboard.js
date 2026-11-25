@@ -159,6 +159,53 @@ function carregarUltimoCapitulo() {
         });
 }
 
+function carregarUltimosEncontrados(idUsuario) {
+    fetch(`/dashboard/obterUltimosEncontrados/${idUsuario}`)
+        .then(function (resposta) {
+            if (resposta.ok) {
+                resposta.json().then(function (lista) {
+                    let container = document.getElementById("div_lista_ultimos");
+                    if (!container) return;
+
+                    if (lista.length == 0) {
+                        container.innerHTML = `
+                            <div class="item">
+                                <div class="item-esquerda">
+                                    <h4>Nenhum colecionável encontrado ainda</h4>
+                                    <span class="label">MARQUE ITENS NOS CAPÍTULOS PARA VER SEU HISTÓRICO</span>
+                                </div>
+                            </div>
+                        `;
+                        return;
+                    }
+
+                    let html = "";
+                    for (let i = 0; i < lista.length; i++) {
+                        let item = lista[i];
+                        let cap = listaCapitulos[item.capitulo - 1];
+                        let nomeCap = cap ? cap.nome.toUpperCase() : `CAPÍTULO ${item.capitulo}`;
+
+                        html += `
+                            <div class="item">
+                                <div class="item-esquerda">
+                                    <h4>${item.titulo}</h4>
+                                    <span class="label">${nomeCap} • ${item.tipo.toUpperCase()}</span>
+                                </div>
+                                <span class="tempo">${item.dataFormatada}</span>
+                            </div>
+                        `;
+                    }
+                    container.innerHTML = html;
+                });
+            } else {
+                console.log("Erro ao carregar últimos encontrados.");
+            }
+        })
+        .catch(function (erro) {
+            console.log("Erro ao buscar últimos encontrados:", erro);
+        });
+}
+
 function carregarDashboard() {
     let idUsuario = sessionStorage.ID_USUARIO;
     if (!idUsuario) {
@@ -168,4 +215,5 @@ function carregarDashboard() {
     carregarProgressoGeral(idUsuario);
     carregarProgressoTipos(idUsuario);
     carregarUltimoCapitulo();
+    carregarUltimosEncontrados(idUsuario);
 }
