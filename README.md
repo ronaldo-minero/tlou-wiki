@@ -3,9 +3,9 @@
 # TLOU Wiki
 ### *"Procure a Luz"*
 
-*"Quando você estiver perdido na escuridão, procure pela luz."* — Vagalumes
+*"Quando estiver perdido na escuridão, procure a luz."* — Vagalumes
 
-Guia (wiki) e rastreador (tracker) interativo de colecionáveis e conquistas de **The Last of Us Part I**
+Guia (wiki) e rastreador (tracker) interativo de colecionáveis de **The Last of Us Part I**
 
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
@@ -15,7 +15,7 @@ Guia (wiki) e rastreador (tracker) interativo de colecionáveis e conquistas de 
 ![Chart.js](https://img.shields.io/badge/Chart.js-FF6384?style=for-the-badge&logo=chartdotjs&logoColor=white)
 ![Linux](https://img.shields.io/badge/VM_Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black)
 
-![Status](https://img.shields.io/badge/status-em_desenvolvimento-orange?style=flat-square)
+![Status](https://img.shields.io/badge/status-concluído-brightgreen?style=flat-square)
 ![Projeto](https://img.shields.io/badge/SPTech-Projeto_Individual_2026--2-red?style=flat-square)
 
 </div>
@@ -26,27 +26,25 @@ Guia (wiki) e rastreador (tracker) interativo de colecionáveis e conquistas de 
 
 - [Sobre o projeto](#-sobre-o-projeto)
 - [Funcionalidades](#-funcionalidades)
-- [Conteúdo mapeado](#-conteúdo-mapeado-v1)
+- [Conteúdo mapeado](#-conteúdo-mapeado)
 - [Arquitetura](#-tecnologias-e-arquitetura)
 - [Estrutura de pastas](#-estrutura-de-pastas)
-- [Segurança](#-segurança)
-- [Fora do escopo](#-fora-do-escopo-da-v1)
-- [Cronograma](#-cronograma)
+- [Fora do escopo](#-fora-do-escopo)
 - [Como rodar](#-como-rodar)
 
 ---
 
 ## 🌿 Sobre o projeto
 
-Jogadores que querem 100% de conclusão em *The Last of Us Part I* dependem de listas soltas na internet, que não guardam o progresso individual e ainda costumam expor spoilers da história.
+Jogadores que buscam 100% de conclusão em *The Last of Us Part I* dependem de listas soltas na internet, que não guardam o progresso individual e costumam expor spoilers da história.
 
 A **TLOU Wiki** centraliza o catálogo de colecionáveis em uma aplicação web que:
 
 - 💾 salva o progresso de cada jogador em banco de dados;
-- 🙈 oferece um **Modo Sem Spoiler**;
-- 📊 mostra estatísticas em uma dashboard.
+- 🙈 oferece um **Modo Sem Spoiler** para esconder descrições de localização;
+- 📊 mostra estatísticas reais de avanço em uma dashboard interativa.
 
-Tudo isso para tornar a busca pela **Platina** mais organizada, imersiva e segura.
+Tudo isso para tornar a busca pela **Platina** mais organizada e imersiva.
 
 ---
 
@@ -54,33 +52,31 @@ Tudo isso para tornar a busca pela **Platina** mais organizada, imersiva e segur
 
 | | Funcionalidade | Descrição |
 |---|---|---|
-| 🏠 | **Landing Page** | Sinopse, personagens (Joel, Ellie, Tess e Tommy), estações e tipos de colecionáveis |
-| 🔐 | **Cadastro e login** | Validação no front-end (JavaScript) e no back-end (API Node.js) |
-| 🎮 | **Seleção de jogo** | *Part I* disponível; *Part II* bloqueado com o aviso "Em breve" |
-| 📊 | **Dashboard** | Gráficos em Chart.js: total encontrado, progresso por capítulo e por tipo, capítulos jogados, avanço até o final e até a Platina, insígnias |
-| 📖 | **Catálogo por capítulo** | 12 capítulos na barra lateral, cada um com checklist (tipo e dica de localização em texto) |
-| ✅ | **Checklist persistente** | Marque e desmarque itens, gravando no banco via API sem recarregar a página |
-| 🙈 | **Modo Sem Spoiler** | Oculta resumos e dicas de itens ainda não encontrados até você clicar para revelar; preferência salva no banco |
-| 🍂 | **ÚLTIMOS ENCONTRADOS** | Os capítulos na sequência das estações, do Verão à Primavera |
+| 🏠 | **Landing Page** | Apresentação do jogo, personagens (Joel, Ellie, Tess e Tommy), as 4 estações da jornada e os 9 tipos de colecionáveis |
+| 🔐 | **Cadastro e login** | Cadastro com medidor de força de senha em tempo real (regex), validação de campos e autenticação via API Node.js + `sessionStorage` |
+| 📊 | **Dashboard** | Gráfico de rosca em Chart.js com progresso total, capítulos concluídos, barras por tipo de colecionável, card de **Último Acesso**, progresso dos 12 capítulos e lista dos **Últimos 10 Encontrados** com data/hora |
+| 📖 | **Páginas por capítulo** | 12 capítulos navegáveis, cada um com barra de progresso própria e lista dinâmica de colecionáveis vinda do banco |
+| ✅ | **Checklist persistente** | Marcação e desmarcação de itens gravando direto no MySQL via `fetch` sem recarregar a página |
+| 🙈 | **Modo Sem Spoiler** | Chave na navbar que substitui as descrições dos colecionáveis pelo aviso *"Modo anti-spoiler ativo"* enquanto estiver ativada |
 
 ---
 
-## 🗂️ Conteúdo mapeado (v1)
+## 🗂️ Conteúdo mapeado
 
-A v1 cobre integralmente o primeiro jogo: **12 capítulos** (Verão, Outono, Inverno, Primavera e Epílogo) e **199 colecionáveis** em 9 categorias.
+O projeto cobre os **12 capítulos** de *The Last of Us Part I* (Verão, Outono, Inverno e Primavera) e **205 colecionáveis** divididos em 9 categorias:
 
 | Categoria | Qtd. |
 |---|:---:|
 | 📜 Artefatos | **85** |
 | 💬 Conversas opcionais | **37** |
 | 🏷️ Pingentes de vagalume | **30** |
+| 🦸 Quadrinhos *Savage Starlight* | **14** |
+| 🚪 Portas de faca | **13** |
 | 📘 Manuais de treinamento | **12** |
-| 🚪 Portas de shiv | **12** |
-| 🦸 Quadrinhos *Savage Starlight* | **12** |
-| 🔧 Ferramentas de bancada | **4** |
+| 🔧 Ferramentas de bancada | **5** |
+| 😂 Piadas da Ellie | **5** |
 | 🔒 Cofres | **4** |
-| 😂 Piadas da Ellie | **3** |
-| | **199** |
+| **Total** | **205** |
 
 ---
 
@@ -88,10 +84,10 @@ A v1 cobre integralmente o primeiro jogo: **12 capítulos** (Verão, Outono, Inv
 
 | Camada | Tecnologia |
 |---|---|
-| 🎨 Front-end | HTML, CSS e JavaScript |
+| 🎨 Front-end | HTML5, CSS3 e JavaScript |
 | 📈 Gráficos | Chart.js |
-| ⚙️ Back-end | API Node.js (`web-data-viz`) |
-| 🗄️ Banco de dados | SQL, isolado em uma Máquina Virtual Linux |
+| ⚙️ Back-end | API Node.js + Express (`web-data-viz`, padrão MVC) |
+| 🗄️ Banco de dados | MySQL, isolado em uma Máquina Virtual Linux |
 
 > ⚠️ A VM Linux contém **somente** o banco de dados. A API e o site rodam fora dela e se conectam via rede.
 
@@ -101,39 +97,46 @@ A v1 cobre integralmente o primeiro jogo: **12 capítulos** (Verão, Outono, Inv
 
 ```
 📦 tlou-wiki
- ┣ 📂 public/    → páginas HTML, CSS e JavaScript
- ┗  📂 src/      → API Node.js
+ ┣ 📂 public/
+ ┃ ┣ 📂 assets/      → imagens dos capítulos, estações e personagens
+ ┃ ┣ 📂 capitulos/   → páginas HTML dos 12 capítulos
+ ┃ ┣ 📂 dashboard/   → painel principal do usuário logado
+ ┃ ┣ 📂 js/          → scripts de sessão, dashboard e checklist
+ ┃ ┣ 📂 styles/      → folhas de estilo CSS
+ ┃ ┣ 📜 index.html
+ ┃ ┣ 📜 login.html
+ ┃ ┗ 📜 cadastro.html
+ ┣ 📂 src/
+ ┃ ┣ 📂 controllers/ → regras e formatação de dados (usuário, conquistas e dashboard)
+ ┃ ┣ 📂 database/    → conexão MySQL e script tlouwiki.sql
+ ┃ ┣ 📂 models/      → consultas SQL no banco de dados
+ ┃ ┗ 📂 routes/      → rotas da API Express
+ ┣ 📜 .env.example
+ ┗ 📜 app.js
 ```
 
 ---
 
-## 🔒 Segurança
+## 🚧 Fora do escopo
 
-- 🔑 Senhas nunca são armazenadas em texto puro: o hash é feito no back-end.
-- 🛡️ Validação de dados em duas camadas (front-end e API).
-
----
-
-## 🚧 Fora do escopo da v1
-
-- ❌ Catálogo de *The Last of Us Part II* (aparece apenas como "Em breve")
-- ❌ Imagens de localização dos colecionáveis (cada item tem só uma dica em texto; fica como melhoria futura)
+- ❌ Catálogo de *The Last of Us Part II*
+- ❌ Imagens da localização exata de cada colecionável (as dicas são em texto)
 - ❌ Rankings competitivos entre jogadores
 - ❌ Compra ou download de jogos
-- ❌ Integração com contas da PlayStation Network e Steam
+- ❌ Integração com contas da PlayStation Network ou Steam
 
 ---
 
-## 🗓️ Cronograma
+## 🚀 Como rodar
 
-| Semana | Entrega |
-|:---:|---|
-| **1** | Start do projeto e escolha do tema |
-| **2** | Documentação, Trello, repositório no GitHub e primeiros commits |
-| **3** | Landing Page (`index.html`) |
-| **4** | Cadastro, login, Home Logada, API gravando no banco na VM e listas renderizadas com `for` e vetores |
-| **5** | Dashboard com Chart.js, indicadores, modo sem spoiler, perfil e ÚLTIMOS ENCONTRADOS |
-| **6** | Finalização e apresentação de 10 minutos para a banca (30/11 a 04/12) |
+1. Execute o script `src/database/tlouwiki.sql` no seu servidor MySQL (local ou na VM Linux).
+2. Copie o arquivo `.env.example` para `.env.dev` (ou `.env` em produção) e preencha os dados de acesso ao banco (`DB_HOST`, `DB_USER`, `DB_PASSWORD`, etc.).
+3. Instale as dependências e inicie o servidor:
+   ```bash
+   npm install
+   npm start
+   ```
+4. Acesse no navegador: `http://localhost:3333`
 
 ---
 
