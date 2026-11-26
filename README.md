@@ -97,6 +97,7 @@ O projeto cobre os **12 capítulos** de *The Last of Us Part I* (Verão, Outono,
 
 ```
 📦 tlou-wiki
+ ┣ 📂 docs/          → documentação oficial (PDF) e diário de prompts
  ┣ 📂 public/
  ┃ ┣ 📂 assets/      → imagens dos capítulos, estações e personagens
  ┃ ┣ 📂 capitulos/   → páginas HTML dos 12 capítulos
