@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Oswald:wght@500;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Inter:wght@300;400;500;600;700&family=Oswald:wght@500;600;700&family=Playfair+Display:wght@500;600&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="styles/index.css">
 </head>
@@ -32,55 +32,47 @@
         </ul>
 
         <div class="buttons">
-            <button class="btn" onclick="window.location.href='login.html'">ENTRAR</button>
-            <button class="btn btn-primary" onclick="window.location.href='cadastro.html'">CRIAR CONTA</button>
+            <a href="login.html" class="btn">ENTRAR</a>
+            <a href="cadastro.html" class="btn btn-primary">CRIAR CONTA</a>
         </div>
     </nav>
 
     <main>
         <section class="inicio" id="inicio">
             <div class="inicio-conteudo">
-                <p class="label">THE LAST OF US</p>
-                <h1>Uma jornada<br>sobre família.</h1>
+                <h1>Uma jornada<br>sobre <span class="manuscrito">família.</span></h1>
                 <p class="text">Vinte anos após o surto de cordyceps, o contrabandista Joel atravessa os Estados Unidos
                     com
                     Ellie, uma garota que pode ser a última esperança da humanidade. Acompanhe cada capítulo e
                     marque todos os pingentes, artefatos e conversas do caminho.</p>
 
                 <div class="buttons">
-                    <button class="btn btn-primary" onclick="window.location.href='cadastro.html'">COMEÇAR A CAÇADA</button>
-                    <button class="btn btn-secondary" onclick="window.location.href='login.html'">JÁ TENHO CONTA</button>
+                    <a href="cadastro.html" class="btn btn-primary">COMEÇAR A CAÇADA</a>
+                    <a href="login.html" class="btn btn-secondary">JÁ TENHO CONTA</a>
                 </div>
 
                 <div class="infos">
                     <div class="info">
                         <h2>12</h2>
-                        <span class="label">CAPÍTULOS</span>
+                        <span class="label">Capítulos</span>
                     </div>
                     <div class="info">
                         <h2>09</h2>
-                        <span class="label">TIPOS DE ITEM</span>
+                        <span class="label">Tipos de item</span>
                     </div>
                     <div class="info">
                         <h2>04</h2>
-                        <span class="label">ESTAÇÕES</span>
+                        <span class="label">Estações</span>
                     </div>
                 </div>
             </div>
-
-            <p class="label">SIGA A LUZ. EXPLORE A JORNADA.</p>
         </section>
 
         <section class="section" id="jogo">
             <div class="top">
                 <div>
-                    <p class="label">01 / O JOGO</p>
-                    <h1>A LUTA DURANDO O FIM DO MUNDO.</h1>
-                </div>
-
-                <div>
-                    <p class="text">De cidades em ruínas a estradas silenciosas, Joel e Ellie cruzam um país
-                        transformado. O que começa como uma missão se torna uma relação que muda os dois.</p>
+                    <p class="label">O JOGO</p>
+                    <h1>A luta durante o <span class="manuscrito">fim do mundo.</span></h1>
                 </div>
             </div>
 
@@ -89,7 +81,7 @@
                     <div class="image">
                         <img src="assets/joel.jpg" alt="Joel">
                         <div class="cap">
-                            <h3>JOEL</h3>
+                            <h3>Joel</h3>
                         </div>
                     </div>
                     <div>
@@ -103,7 +95,7 @@
                     <div class="image">
                         <img src="assets/ellie.jpg" alt="Ellie">
                         <div class="cap">
-                            <h3>ELLIE</h3>
+                            <h3>Ellie</h3>
                         </div>
                     </div>
                     <div>
@@ -117,7 +109,7 @@
                     <div class="image">
                         <img src="assets/tess.jpg" alt="Tess">
                         <div class="cap">
-                            <h3>TESS</h3>
+                            <h3>Tess</h3>
                         </div>
                     </div>
                     <div>
@@ -131,7 +123,7 @@
                     <div class="image">
                         <img src="assets/tommy.jpg" alt="Tommy">
                         <div class="cap">
-                            <h3>TOMMY</h3>
+                            <h3>Tommy</h3>
                         </div>
                     </div>
                     <div>
@@ -145,12 +137,9 @@
         <section class="section" id="jornada">
             <div class="top">
                 <div>
-                    <p class="label">02 / A JORNADA</p>
-                    <h1>UM ANO NA ESTRADA</h1>
+                    <p class="label">A JORNADA</p>
+                    <h1>Um ano na <span class="manuscrito">estrada.</span></h1>
                 </div>
-
-                <p class="text">Quatro estações. Doze capítulos. Uma história longa pra jogar.
-                </p>
             </div>
 
             <div class="bottom">
@@ -159,7 +148,7 @@
                         <img src="assets/verao.jpg" alt="Verão">
                         <div class="cap">
                             <span class="label">01 / CAPÍTULOS 01-06</span>
-                            <h3>VERÃO</h3>
+                            <h3>Verão</h3>
                         </div>
                     </div>
                     <p class="text">O primeiro passo pós surto. Um mundo que a natureza começou a recuperar.</p>
@@ -170,7 +159,7 @@
                         <img src="assets/outono.jpg" alt="Outono">
                         <div class="cap">
                             <span class="label">02 / CAPÍTULOS 07-08</span>
-                            <h3>OUTONO</h3>
+                            <h3>Outono</h3>
                         </div>
                     </div>
                     <p class="text">A estrada muda de cor. Laços se fortalecem a cada quilômetro em busca do objetivo.</p>
@@ -180,8 +169,8 @@
                     <div class="image">
                         <img src="assets/inverno.jpg" alt="Inverno">
                         <div class="cap">
-                            <span class="label">03 / CAPÍTULO 09</span>
-                            <h3>INVERNO</h3>
+                            <span class="label">CAPÍTULO 09</span>
+                            <h3>Inverno</h3>
                         </div>
                     </div>
                     <p class="text">O silêncio da neve. Seguir em frente e resistir.</p>
@@ -191,31 +180,21 @@
                     <div class="image">
                         <img src="assets/primavera.jpg" alt="Primavera">
                         <div class="cap">
-                            <span class="label">04 / CAPÍTULOS 10-12</span>
-                            <h3>PRIMAVERA</h3>
+                            <span class="label">CAPÍTULOS 10-12</span>
+                            <h3>Primavera</h3>
                         </div>
                     </div>
                     <p class="text">A vida encontra finalmente uma paz. Há sempre mais um caminho adiante.</p>
                 </div>
-            </div>
-
-            <div class="spoiler">
-                <svg viewBox="0 0 24 24">
-                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                </svg>
-                <span class="label">O CAMINHO APARECE. AS SURPRESAS FICAM COM VOCÊ. MODO SEM SPOILER DISPONÍVEL NO
-                    TRACKER.</span>
             </div>
         </section>
 
         <section class="section" id="colecionaveis">
             <div class="top">
                 <div>
-                    <p class="label">03 / COLECIONÁVEIS</p>
-                    <h1>TUDO O QUE DÁ PARA ENCONTRAR</h1>
+                    <p class="label">COLECIONÁVEIS</p>
+                    <h1>Tudo o que dá para <span class="manuscrito">encontrar.</span></h1>
                 </div>
-
-                <p class="text">Nove tipos de descoberta para quem prefere olhar de perto, em vez de apenas passar.</p>
             </div>
 
             <div class="bottom">
@@ -351,16 +330,9 @@
         </section>
 
 
-        <section class="the-end" id="finalzin"> <!--top pra falar antes do footer-->
+        <section class="the-end" id="finalzin">
             <div class="end-conteudo">
-                <p class="label">A PRÓXIMA DESCOBERTA É SUA.</p>
-                <h1><i>"Quando estiver perdido na escuridão, procure a luz."</i></h1>
-                <p class="text">Crie sua conta grátis e marque cada item encontrado.</p>
-
-                <div class="buttons">
-                    <button class="btn btn-primary" onclick="window.location.href='cadastro.html'">CRIAR CONTA</button>
-                </div>
-
+                <h1><i>"Quando estiver perdido na escuridão, <span class="manuscrito">procure a luz.</span>"</i></h1>
             </div>
         </section>
     </main>

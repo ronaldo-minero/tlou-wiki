@@ -21,23 +21,18 @@
             <div class="left-topo">
                 <div class="logo">
                     <div class="logo-icon">
-                        <img src="./assets/logo.png" alt="Logo Olhe para a Luz">
+                        <img src="./assets/logo.png" alt="Logo Procure a Luz">
                     </div>
                     <div class="logo-texto">
-                        <h2>OLHE PARA A LUZ</h2>
+                        <h2>PROCURE A LUZ</h2>
                     </div>
                 </div>
             </div>
 
             <div class="left-centro">
-                <p class="label">THE LAST OF US PART I</p>
                 <h1>TODA JORNADA
 COMEÇA COM UM PASSO.</h1>
                 <p class="text">Entre ruínas e recomeços, cada descoberta conta. Guarde um pouco dessa jornada.</p>
-            </div>
-
-            <div class="left-rodape">
-                <span class="label">SOBREVIVER NÃO É O BASTANTE</span>
             </div>
         </div>
 
@@ -53,7 +48,6 @@ COMEÇA COM UM PASSO.</h1>
             </div>
 
             <div class="right-centro">
-                <p class="label">TRACKER DE COLECIONÁVEIS</p>
                 <h1>SIGA A SUA LUZ</h1>
                 <p class="text">Crie seu espaço na jornada de The Last of Us. Registre cada item encontrado, cada passo registrado.</p>
 
@@ -201,7 +195,7 @@ COMEÇA COM UM PASSO.</h1>
             let temMaiuscula = /[A-Z]/.test(senha);
             let temMinuscula = /[a-z]/.test(senha);
             let temNumero = /[0-9]/.test(senha);
-            let temEspecial = /[^A-Za-z0-9\s]/.test(senha);
+            let temEspecial = /[!@#$%¨&*()_+=.,?\/-]/.test(senha);
 
             req_tamanho.style.color = temTamanhoMinimo ? "#81c784" : "#e57373";
             req_maiuscula.style.color = temMaiuscula ? "#81c784" : "#e57373";

@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Oswald:wght@500;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Inter:wght@300;400;500;600;700&family=Oswald:wght@500;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="../styles/dashboard.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -21,17 +21,17 @@
     <nav class="navbar">
         <a href="../index.html" class="logo">
             <div class="icon">
-                <img src="../assets/logo.png" alt="Logo Olhe para a Luz">
+                <img src="../assets/logo.png" alt="Logo Procure a Luz">
             </div>
             <div>
-                <h2>OLHE PARA A LUZ</h2>
+                <h2>PROCURE A LUZ</h2>
             </div>
         </a>
 
         <ul class="links">
             <li><a class="label ativo" href="#inicio">DASHBOARD</a></li>
             <li><a class="label" href="#capitulos">CAPÍTULOS</a></li>
-            <li><a class="label" href="#ultimos">LINHA DO TEMPO</a></li>
+            <li><a class="label" href="#ultimos">ÚLTIMOS ENCONTRADOS</a></li>
         </ul>
 
         <div class="usuario">
@@ -46,7 +46,6 @@
             </div>
 
             <div class="perfil">
-                <span class="avatar">R</span>
                 <span class="nome" id="web_usuario_nav">usuário</span>
                 <a class="sair" onclick="limparSessao()">SAIR</a>
             </div>
@@ -57,8 +56,7 @@
         <section class="inicio" id="inicio">
             <div class="top">
                 <div>
-                    <p class="label">SEU CADERNO DE VIAGEM / PART I</p>
-                    <h1>CONTINUE A JORNADA, <span id="web_usuario">usuário</span>.</h1>
+                    <h1>Continue a jornada, <span id="web_usuario">usuário</span>.</h1>
                 </div>
             </div>
 
@@ -75,8 +73,8 @@
                     </div>
 
                     <div class="progresso-info">
-                        <p class="text"><strong id="strong_itens_amostra">0 de 0</strong> itens da amostra</p>
-                        <span class="label" id="span_capitulos_concluidos">00 / 12 CAPÍTULOS CONCLUÍDOS</span>
+                        <p class="text"><strong id="strong_itens_amostra">0 de 0</strong> itens encontrados</p>
+                        <span class="label" id="span_capitulos_concluidos">00 / 11 CAPÍTULOS CONCLUÍDOS</span>
                     </div>
                 </div>
 
@@ -93,9 +91,7 @@
                     </div>
 
                     <div class="proximo-conteudo">
-                        <span class="label" id="span_estacao_ultimo">04 / VERÃO</span>
                         <h2 id="h2_nome_ultimo">A CIDADE DE BILL</h2>
-                        <p class="text" id="p_itens_ultimo">3 de 8 itens encontrados na amostra.</p>
                         <button class="btn btn-primary" id="btn_continuar_checklist" onclick="window.location.href='../capitulos/capitulo-04.html'">
                             CONTINUAR CHECKLIST
                             <svg viewBox="0 0 24 24">
@@ -114,7 +110,6 @@
                     <h1>CAPÍTULOS</h1>
                     <p class="text">Clique em um capítulo para abrir o checklist de colecionáveis.</p>
                 </div>
-                <span class="label">12 ETAPAS / 04 ESTAÇÕES</span>
             </div>
 
             <div class="bottom">
@@ -128,7 +123,7 @@
                     <div class="card-conteudo">
                         <h3>Cidade natal</h3>
                         <div class="card-rodape">
-                            <span class="label" id="span_status_cap_1">NÃO INICIADO</span>
+                            <span class="label">SEM COLECIONÁVEIS</span>
                             <span class="text" id="span_itens_cap_1">0/0 itens</span>
                         </div>
                         <div class="barra">
@@ -147,7 +142,6 @@
                     <div class="card-conteudo">
                         <h3>A zona de quarentena</h3>
                         <div class="card-rodape">
-                            <span class="label" id="span_status_cap_2">NÃO INICIADO</span>
                             <span class="text" id="span_itens_cap_2">0/0 itens</span>
                         </div>
                         <div class="barra">
@@ -166,7 +160,6 @@
                     <div class="card-conteudo">
                         <h3>A periferia</h3>
                         <div class="card-rodape">
-                            <span class="label" id="span_status_cap_3">NÃO INICIADO</span>
                             <span class="text" id="span_itens_cap_3">0/0 itens</span>
                         </div>
                         <div class="barra">
@@ -185,7 +178,6 @@
                     <div class="card-conteudo">
                         <h3>A cidade de Bill</h3>
                         <div class="card-rodape">
-                            <span class="label" id="span_status_cap_4">NÃO INICIADO</span>
                             <span class="text" id="span_itens_cap_4">0/0 itens</span>
                         </div>
                         <div class="barra">
@@ -204,7 +196,6 @@
                     <div class="card-conteudo">
                         <h3>Pittsburgh</h3>
                         <div class="card-rodape">
-                            <span class="label" id="span_status_cap_5">NÃO INICIADO</span>
                             <span class="text" id="span_itens_cap_5">0/0 itens</span>
                         </div>
                         <div class="barra">
@@ -223,7 +214,6 @@
                     <div class="card-conteudo">
                         <h3>Os subúrbios</h3>
                         <div class="card-rodape">
-                            <span class="label" id="span_status_cap_6">NÃO INICIADO</span>
                             <span class="text" id="span_itens_cap_6">0/0 itens</span>
                         </div>
                         <div class="barra">
@@ -242,7 +232,6 @@
                     <div class="card-conteudo">
                         <h3>A represa de Tommy</h3>
                         <div class="card-rodape">
-                            <span class="label" id="span_status_cap_7">NÃO INICIADO</span>
                             <span class="text" id="span_itens_cap_7">0/0 itens</span>
                         </div>
                         <div class="barra">
@@ -261,7 +250,6 @@
                     <div class="card-conteudo">
                         <h3>A universidade</h3>
                         <div class="card-rodape">
-                            <span class="label" id="span_status_cap_8">NÃO INICIADO</span>
                             <span class="text" id="span_itens_cap_8">0/0 itens</span>
                         </div>
                         <div class="barra">
@@ -280,7 +268,6 @@
                     <div class="card-conteudo">
                         <h3>Resort à beira do lago</h3>
                         <div class="card-rodape">
-                            <span class="label" id="span_status_cap_9">NÃO INICIADO</span>
                             <span class="text" id="span_itens_cap_9">0/0 itens</span>
                         </div>
                         <div class="barra">
@@ -299,7 +286,6 @@
                     <div class="card-conteudo">
                         <h3>Terminal rodoviário</h3>
                         <div class="card-rodape">
-                            <span class="label" id="span_status_cap_10">NÃO INICIADO</span>
                             <span class="text" id="span_itens_cap_10">0/0 itens</span>
                         </div>
                         <div class="barra">
@@ -318,7 +304,6 @@
                     <div class="card-conteudo">
                         <h3>O laboratório dos Vagalumes</h3>
                         <div class="card-rodape">
-                            <span class="label" id="span_status_cap_11">NÃO INICIADO</span>
                             <span class="text" id="span_itens_cap_11">0/0 itens</span>
                         </div>
                         <div class="barra">
@@ -337,7 +322,6 @@
                     <div class="card-conteudo">
                         <h3>Jackson</h3>
                         <div class="card-rodape">
-                            <span class="label" id="span_status_cap_12">NÃO INICIADO</span>
                             <span class="text" id="span_itens_cap_12">0/0 itens</span>
                         </div>
                         <div class="barra">
