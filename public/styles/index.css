@@ -70,16 +70,30 @@ svg {
     stroke-linejoin: round;
 }
 
-h1, h2, h3 {
+h2, h3 {
     font-family: 'Oswald', sans-serif;
     font-weight: 700;
     line-height: 1.1;
     letter-spacing: .5px;
 }
 
-h1 { font-size: 42px; }
+h1 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 500;
+    font-size: 46px;
+    line-height: 1.08;
+    letter-spacing: -0.5px;
+}
+
 h2 { font-size: 18px; }
 h3 { font-size: 22px; }
+
+.manuscrito {
+    font-family: 'Caveat', cursive;
+    font-weight: 600;
+    font-size: 1.25em;
+    color: var(--dourado);
+}
 
 .label, .btn {
     font-family: inherit;
@@ -117,11 +131,13 @@ p.label {
 }
 
 .btn {
+    display: inline-block;
     padding: 12px 22px;
     border: 1px solid transparent;
     border-radius: 2px;
     background: none;
     color: inherit;
+    text-decoration: none;
     cursor: pointer;
     transition: border-color 0.2s, filter 0.2s;
 }
@@ -129,11 +145,17 @@ p.label {
 .btn:hover {
     border-color: var(--dourado);
     filter: brightness(1.15);
+    text-decoration: none;
+    color: inherit;
 }
 
 .btn-primary {
     background: var(--dourado);
     border-color: var(--dourado);
+    color: var(--fundo);
+}
+
+.btn-primary:hover {
     color: var(--fundo);
 }
 
@@ -203,8 +225,8 @@ nav {
 }
 
 .inicio h1 {
-    font-size: 100px;
-    letter-spacing: -1px;
+    font-size: 76px;
+    line-height: 1.05;
     margin-bottom: 22px;
 }
 
@@ -223,6 +245,11 @@ nav {
 }
 
 .infos .label {
+    font-family: 'Caveat', cursive;
+    font-size: 22px;
+    font-weight: 500;
+    letter-spacing: 0;
+    text-transform: none;
     color: var(--esmaecido);
 }
 
@@ -258,12 +285,6 @@ nav {
     background: var(--fundo-alt);
 }
 
-#jornada .top .text,
-#colecionaveis .top .text {
-    text-align: right;
-    max-width: 360px;
-}
-
 #jornada .image {
     aspect-ratio: 16 / 11;
 }
@@ -273,23 +294,6 @@ nav {
 .inverno .image { border-bottom: 2px solid var(--inverno); }
 .primavera .image { border-bottom: 2px solid var(--primavera); }
 
-.spoiler {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-top: 40px;
-    color: var(--esmaecido);
-}
-
-.spoiler .label {
-    color: var(--esmaecido);
-}
-
-.spoiler svg {
-    width: 20px;
-    height: 20px;
-    flex-shrink: 0;
-}
 .bottom {
     display: flex;
     flex-wrap: wrap;
@@ -335,7 +339,9 @@ nav {
 }
 
 .cap h3 {
-    font-size: 35px;
+    font-family: 'Caveat', cursive;
+    font-weight: 600;
+    font-size: 42px;
 }
 
 .box {
@@ -373,13 +379,10 @@ nav {
 }
 
 .the-end h1 {
-    font-size: 85px; 
+    font-size: 64px;
     margin-bottom: 22px;
 }
 
-.the-end .text {
-    margin-bottom: 34px;
-}
 footer {
     display: flex;
     justify-content: space-between;
