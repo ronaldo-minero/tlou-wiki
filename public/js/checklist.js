@@ -9,25 +9,25 @@ function carregarProgressoCapitulo(capitulo) {
         .then(function (resposta) {
             if (resposta.ok) {
                 resposta.json().then(function (dados) {
-                    let elNumero = document.getElementById("div_progresso_numero");
-                    let elPorcentagem = document.getElementById("span_progresso_porcentagem");
-                    let elBarra = document.getElementById("div_barra_preenchida");
-                    let elPendentes = document.getElementById("span_progresso_pendentes");
+                    let divNumero = document.getElementById("div_progresso_numero");
+                    let spanPorcentagem = document.getElementById("span_progresso_porcentagem");
+                    let divBarra = document.getElementById("div_barra_preenchida");
+                    let spanPendentes = document.getElementById("span_progresso_pendentes");
 
-                    if (elNumero) {
-                        elNumero.innerHTML = `${dados.coletados} / ${dados.total} itens`;
+                    if (divNumero) {
+                        divNumero.innerHTML = `${dados.coletados} / ${dados.total} itens`;
                     }
 
-                    if (elPorcentagem) {
-                        elPorcentagem.innerHTML = `${dados.porcentagem}% CONCLUÍDO`;
+                    if (spanPorcentagem) {
+                        spanPorcentagem.innerHTML = `${dados.porcentagem}% CONCLUÍDO`;
                     }
 
-                    if (elBarra) {
-                        elBarra.style.width = `${dados.porcentagem}%`;
+                    if (divBarra) {
+                        divBarra.style.width = `${dados.porcentagem}%`;
                     }
 
-                    if (elPendentes) {
-                        elPendentes.innerHTML = `${dados.pendentes} ITENS PENDENTES`;
+                    if (spanPendentes) {
+                        spanPendentes.innerHTML = `${dados.pendentes} ITENS PENDENTES`;
                     }
                 });
             }

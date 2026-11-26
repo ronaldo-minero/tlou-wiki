@@ -61,7 +61,7 @@ Tudo isso para tornar a busca pela **Platina** mais organizada, imersiva e segur
 | 📖 | **Catálogo por capítulo** | 12 capítulos na barra lateral, cada um com checklist (tipo e dica de localização em texto) |
 | ✅ | **Checklist persistente** | Marque e desmarque itens, gravando no banco via API sem recarregar a página |
 | 🙈 | **Modo Sem Spoiler** | Oculta resumos e dicas de itens ainda não encontrados até você clicar para revelar; preferência salva no banco |
-| 🍂 | **Linha do Tempo** | Os capítulos na sequência das estações, do Verão à Primavera |
+| 🍂 | **ÚLTIMOS ENCONTRADOS** | Os capítulos na sequência das estações, do Verão à Primavera |
 
 ---
 
@@ -132,7 +132,7 @@ A v1 cobre integralmente o primeiro jogo: **12 capítulos** (Verão, Outono, Inv
 | **2** | Documentação, Trello, repositório no GitHub e primeiros commits |
 | **3** | Landing Page (`index.html`) |
 | **4** | Cadastro, login, Home Logada, API gravando no banco na VM e listas renderizadas com `for` e vetores |
-| **5** | Dashboard com Chart.js, indicadores, modo sem spoiler, perfil e linha do tempo |
+| **5** | Dashboard com Chart.js, indicadores, modo sem spoiler, perfil e ÚLTIMOS ENCONTRADOS |
 | **6** | Finalização e apresentação de 10 minutos para a banca (30/11 a 04/12) |
 
 ---

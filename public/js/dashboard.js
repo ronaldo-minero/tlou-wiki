@@ -51,19 +51,19 @@ function carregarProgressoGeral(idUsuario) {
         .then(function (resposta) {
             if (resposta.ok) {
                 resposta.json().then(function (dados) {
-                    let elPorcentagem = document.getElementById("h2_porcentagem_amostra");
-                    let elItens = document.getElementById("strong_itens_amostra");
-                    let elCapitulos = document.getElementById("span_capitulos_concluidos");
+                    let h2Porcentagem = document.getElementById("h2_porcentagem_amostra");
+                    let strongItens = document.getElementById("strong_itens_amostra");
+                    let spanCapitulos = document.getElementById("span_capitulos_concluidos");
 
-                    if (elPorcentagem) {
-                        elPorcentagem.innerHTML = `${dados.porcentagem}%`;
+                    if (h2Porcentagem) {
+                        h2Porcentagem.innerHTML = `${dados.porcentagem}%`;
                     }
-                    if (elItens) {
-                        elItens.innerHTML = `${dados.totalColetados} de ${dados.totalItens}`;
+                    if (strongItens) {
+                        strongItens.innerHTML = `${dados.totalColetados} de ${dados.totalItens}`;
                     }
-                    if (elCapitulos) {
+                    if (spanCapitulos) {
                         let concluidosFormatado = dados.capitulosConcluidos < 10 ? "0" + dados.capitulosConcluidos : "" + dados.capitulosConcluidos;
-                        elCapitulos.innerHTML = `${concluidosFormatado} / ${dados.totalCapitulos} CAPÍTULOS CONCLUÍDOS`;
+                        spanCapitulos.innerHTML = `${concluidosFormatado} / ${dados.totalCapitulos} CAPÍTULOS CONCLUÍDOS`;
                     }
 
                     inicializarGrafico(dados.porcentagem);
@@ -126,19 +126,19 @@ function carregarUltimoCapitulo() {
                     let cap = listaCapitulos[num - 1];
                     let numFormatado = num < 10 ? "0" + num : "" + num;
 
-                    let elSpanEstacao = document.getElementById("span_estacao_ultimo");
-                    let elH2Nome = document.getElementById("h2_nome_ultimo");
-                    let elBtn = document.getElementById("btn_continuar_checklist");
+                    let spanEstacao = document.getElementById("span_estacao_ultimo");
+                    let h2Nome = document.getElementById("h2_nome_ultimo");
+                    let btnContinuar = document.getElementById("btn_continuar_checklist");
                     let divCard = document.getElementById("div_card_ultimo");
 
-                    if (elSpanEstacao) {
-                        elSpanEstacao.innerHTML = `${numFormatado} / ${cap.estacao.toUpperCase()}`;
+                    if (spanEstacao) {
+                        spanEstacao.innerHTML = `${numFormatado} / ${cap.estacao.toUpperCase()}`;
                     }
-                    if (elH2Nome) {
-                        elH2Nome.innerHTML = cap.nome.toUpperCase();
+                    if (h2Nome) {
+                        h2Nome.innerHTML = cap.nome.toUpperCase();
                     }
-                    if (elBtn) {
-                        elBtn.onclick = function () {
+                    if (btnContinuar) {
+                        btnContinuar.onclick = function () {
                             window.location.href = `../capitulos/capitulo-${numFormatado}.html`;
                         };
                     }
@@ -209,16 +209,16 @@ function carregarProgressoCapitulos(idUsuario) {
                 resposta.json().then(function (capitulos) {
                     for (let i = 0; i < capitulos.length; i++) {
                         let cap = capitulos[i];
-                        let elItens = document.getElementById(`span_itens_cap_${cap.capitulo}`);
-                        let elBarra = document.getElementById(`div_barra_cap_${cap.capitulo}`);
+                        let spanItens = document.getElementById(`span_itens_cap_${cap.capitulo}`);
+                        let divBarra = document.getElementById(`div_barra_cap_${cap.capitulo}`);
 
-                        if (elItens) {
+                        if (spanItens) {
                             let textoItem = cap.total == 1 ? "item" : "itens";
-                            elItens.innerHTML = `${cap.coletados}/${cap.total} ${textoItem}`;
+                            spanItens.innerHTML = `${cap.coletados}/${cap.total} ${textoItem}`;
                         }
 
-                        if (elBarra) {
-                            elBarra.style.width = `${cap.porcentagem}%`;
+                        if (divBarra) {
+                            divBarra.style.width = `${cap.porcentagem}%`;
                         }
                     }
                 });

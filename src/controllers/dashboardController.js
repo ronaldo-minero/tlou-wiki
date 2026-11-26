@@ -31,7 +31,7 @@ function obterProgressoGeral(req, res) {
                         totalColetados: totalColetados,
                         porcentagem: porcentagem,
                         capitulosConcluidos: capitulosConcluidos,
-                        totalCapitulos: 12
+                        totalCapitulos: 11
                     });
                 })
                 .catch(function (erro) {
